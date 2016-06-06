@@ -1,0 +1,74 @@
+﻿@using QLKH_NEW.Models;
+
+<div class="modal fade" id="myModal_ThemNgoaiNgu" role="dialog">
+    <div class="modal-dialog text-center">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="" id="headerDialog">Trình Độ Ngoại Ngữ</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="All_Dialog" class="" style="padding:20px 30px">
+                    <div class="panel panel-info">
+                        <div class="panel-heading text-center ">
+                            <strong>Ngoại Ngữ: </strong>
+                            @*<select style="width:100%" class="input_height form-control-static" id="MaChuDe" name="MaChuDe">
+                                    <option value="16">Tiếng Anh</option>
+                                    <option value="1">Tiếng Nhật</option>
+                                    <option value="1">Tiếng Trung Quốc</option>
+                                    <option value="1">Tiếng Hàn</option>
+                                    <option value="1">Tiếng Pháp</option>
+                                    <option value="1">Tiếng Thái</option>
+                                    <option value="1">Tiếng Hàn</option>
+                                    <option value="1">Tiếng Pháp</option>
+
+
+                                </select>*@
+                            @Html.DropDownList("IDNgoaiNgu", (SelectList)ViewBag.NgoaiNgu, new { @class = "input_height form-control-static" })
+                            
+                        </div>
+
+                        <table class="table table-bordered table-responsive text-center" style="vertical-align:middle">
+
+                            <tr>
+                                <td><strong>Nghe: </strong> </td>
+                                <td><input  type="radio" name="Nghe" id="Nghe1" value="Tốt" /> Tốt</td>
+                                <td><input type="radio" name="Nghe" id="Nghe2" value="Khá" /> Khá</td>
+                                <td><input type="radio" name="Nghe" id="Nghe3" value="Trung Bình" /> Trung Bình</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nói: </strong> </td>
+                                <td><input type="radio" name="Noi" id="Noi1" value="Tốt"/> Tốt</td>
+                                <td><input type="radio" name="Noi" id="Noi2" value="Khá"/> Khá</td>
+                                <td><input type="radio" name="Noi" id="Noi3" value="Trung Bình" /> Trung Bình</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Đọc: </strong> </td>
+                                <td><input type="radio" name="Doc" id="Doc1" value="Tốt"/> Tốt</td>
+                                <td><input type="radio" name="Doc" id="Doc2" value="Khá"/> Khá</td>
+                                <td><input type="radio" name="Doc" id="Doc3" value="Trung Bình" /> Trung Bình</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Viết: </strong> </td>
+                                <td><input type="radio" name="Viet" id="Viet1" value="Tốt"/> Tốt</td>
+                                <td><input type="radio" name="Viet" id="Viet2" value="Khá"/> Khá</td>
+                                <td><input type="radio" name="Viet" id="Viet3" value="Trung Bình" /> Trung Bình</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="ThemNN()" class="btn btn-success " type="button"> Thêm</button>
+                    @*<button onclick="clearChecked()" class="btn btn-success " type="button"> Hủy Check</button>*@
+                    <button class="btn btn-warning pull-right " data-dismiss="modal" id="themNN_Dismis_modal">Hủy</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿
+
+@using QLKH_NEW.Models
+@{
+    List<LyLichKhoaHoc_Seminar> list_LLKKH_Seminar = (List<LyLichKhoaHoc_Seminar>)Session["ListLLLKHSeminar"];
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading text-center "><strong>Báo Cáo </strong></div>
+
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Tên báo cáo</th>
+            <th>Tên tác giả</th>
+            <th>Cấp Seminar</th>
+            <th>Ngày thực hiện</th>
+            <th>Ghi chú</th>
+            <th>Giờ NCKH quy đổi</th>
+            <th class="col-md-1">Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKKH_Seminar)
+            {
+            <tr>
+                <td class="col-md-3">@item.TenBaoCao</td>
+                <td class="col-md-2">@item.TenTacGia</td>
+               
+                <td class="col-md-1">@item.CapSeminar</td>
+                <td class="col-md-1">@item.NgayThucHien</td>
+                <td class="col-md-3">@item.GhiChu</td>
+                <td class="col-md-1">@item.GioNCKHQuyDoi</td>
+                <td>
+                    <button onclick="XoaSeminar('@item.IDSeminar')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+
+
+

@@ -1,0 +1,52 @@
+﻿
+
+
+@using QLKH_NEW.Models
+@{
+    List<LyLichKhoaHoc_ChuyenGiaoCongNghe> list_LLKKH_CGCN = (List<LyLichKhoaHoc_ChuyenGiaoCongNghe>)Session["ListLLLKHCGCN"];
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading text-center "><strong>Các Hoạt Động Chuyển Giao Công Nghệ </strong></div>
+
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Tên hoạt động</th>
+            <th>Sản phẩm của đề tài (Mã số)</th>
+            <th>Doanh thu</th>
+            <th>Thời gian</th>
+            <th>Tác giả</th>
+            <th>Giờ NCKH quy đổi</th>
+            <th class="col-md-1">Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKKH_CGCN)
+            {
+            <tr>
+                <td class="col-md-3">@item.TenHoatDong</td>
+                <td class="col-md-2 UrlMultiline">@item.SanPhamCuaDeTai</td>
+                <td class="col-md-1">@item.DoanhThu</td>
+                <td class="col-md-2">@item.TuNgay - @item.DenNgay</td>
+                <td class="col-md-2">@item.TacGia</td>
+                <td class="col-md-1">@item.GioNCKHQuyDoi</td>
+                <td>
+                    <button onclick="XoaCGCN('@item.IDChuyenGiaoCongNghe')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+
+
+
+
+

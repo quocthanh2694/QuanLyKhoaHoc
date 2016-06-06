@@ -1,0 +1,60 @@
+﻿@using QLKH_NEW.Models;
+@*@model List<LyLichKhoaHoc_NgoaiNgu>*@
+
+@{ 
+    
+    QLKHEntities db = new QLKHEntities();
+    List<LyLichKhoaHoc_NgoaiNgu> list_LLKH_NN = (List<LyLichKhoaHoc_NgoaiNgu>)Session["ListLLKHNN"];
+    List<LyLichKhoaHoc_NgoaiNgu_Tam> list_LLKH_NN_Tam = new List<LyLichKhoaHoc_NgoaiNgu_Tam>();
+    LyLichKhoaHoc_NgoaiNgu_Tam Tam;
+    foreach(var item in list_LLKH_NN)
+    {
+        Tam = new LyLichKhoaHoc_NgoaiNgu_Tam();
+        Tam.IDLyLichKhoaHoc = item.IDLyLichKhoaHoc;
+        Tam.IDNgoaiNgu = item.IDNgoaiNgu;
+        Tam.Nghe = item.Nghe;
+        Tam.Noi = item.Noi;
+        Tam.Doc = item.Doc;
+        Tam.Viet = item.Viet;
+        Tam.NgoaiNgu = db.NgoaiNgus.Find(item.IDNgoaiNgu).Ngoaingu1;
+        list_LLKH_NN_Tam.Add(Tam);
+    }
+    db = null;
+}
+<div class="panel panel-info">
+    <div class="panel-heading text-center "><strong>Trình Độ Ngoại Ngữ</strong></div>
+
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Ngoại Ngữ</th>
+            <th>Nghe</th>
+            <th>Nói</th>
+            <th>Đọc</th>
+            <th>Viết</th>
+            <th>Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKH_NN_Tam)
+        {
+            <tr>
+                <td class="col-md-3" style="max-width:200px">@item.NgoaiNgu</td>
+                <td>@item.Nghe</td>
+                <td>@item.Noi</td>
+                <td>@item.Doc</td>
+                <td>@item.Viet</td>
+                <td class="col-md-1">
+                    <button  onclick="XoaNN('@item.IDNgoaiNgu')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>

@@ -1,0 +1,64 @@
+﻿@using QLKH_NEW.Models
+@{
+    List<LyLichKhoaHoc_DeTaiDaHoanThanh> list_LLKKH_DTDHT = (List<LyLichKhoaHoc_DeTaiDaHoanThanh>)Session["ListLLKHDTDHT"];
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading text-center "><strong>Các Đề Tài Đã Hoàn Thành</strong></div>
+    @*<div class="panel-body">
+            <p>...</p>
+        </div>*@
+
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Cấp độ ĐT</th>
+            <th>Tên ĐT</th>
+            <th>MS và cấp quản lý</th>
+            <th>Thời gian</th>
+            <th>Kinh phí (tr đồng)</th>
+            <th>Chủ nhiệm</th>
+            <th>Tham gia</th>
+            <th>Ngày nghiệm thu</th>
+            <th>Kết quả</th>
+            <th>Giờ NCKH quy đổi</th>
+            <th class="col-md-1">Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKKH_DTDHT)
+        {
+            <tr>
+                <td class="col-md-1">@item.CapDoDeTai</td>
+                <td class="col-md-3">@item.TenDeTai</td>
+                
+                    <td class="col-md-1 ">
+                        <span class="UrlMultiline">
+                            @item.MaSoVaCapQuanLy
+                        </span>
+                    </td>
+                
+               
+                <td>@item.TuNgay - @item.DenNgay</td>
+                <td class="col-md-1">@item.KinhPhi</td>
+                <td class="col-md-1">@item.ChuNhiem</td>
+                <td class="col-md-2">@item.ThamGia</td>
+                <td>@item.NgayNghiemThu</td>
+                <td class="col-md-1">@item.KetQua</td>
+                <td class="col-md-1">@item.GioNCKHQuyDoi</td>
+                <td>
+                    <button onclick="XoaDTDHT('@item.IDDeTaiDaHoanThanh')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+
+

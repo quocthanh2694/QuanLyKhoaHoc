@@ -1,0 +1,1578 @@
+﻿@using QLKH_NEW.Models;
+
+@model LyLichKhoaHoc
+@{
+    ViewBag.Title = "HOME";
+
+}
+
+<form id="form" action="@Url.Action("Index", "Home", Model.IDLyLichKhoaHoc)" method="post" enctype="multipart/form-data" style="margin-left:4%">
+    <div class="col-md-10  " style="width:1050px">
+        @*<div class="banner_1" style="width:1020px;height:140px">
+                <img src="~/Content/Img/PhongSauDaiHoc15.jpg" width="1020" height="140" />
+            </div>*@
+        <div class="jumbotron" style="width:1020px;margin:0">
+
+        
+                <a href="/Log-Out" id="a_Logout" class="btnDangXuat pull-right btn-danger" tabindex="-1">&nbsp;<i class="glyphicon glyphicon-log-out" aria-hidden="true" ></i>&nbsp;Đăng Xuất&nbsp;</a>
+           
+
+            <table class="" style="margin:5px;padding:5px;line-height:2;width:900px">
+
+                <tr>
+                    <th class="text-center" colspan="3" style=""><h2>LÝ LỊCH KHOA HỌC</h2></th>
+                </tr>
+                @* I. THÔNG TIN CƠ BẢN *@
+                @* I. THÔNG TIN CƠ BẢN *@
+                @* I. THÔNG TIN CƠ BẢN *@
+                @* I. THÔNG TIN CƠ BẢN *@
+                <tr>
+                    <td colspan="3"><h3 class="font_tieude font_size_tieude_I">I. THÔNG TIN CƠ BẢN</h3> </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="font_tieude">1. Thông tin cá nhân</td>
+                </tr>
+
+                <tr class="font_noidung">
+                    <td class="pull-right">
+                        <input id="IDLyLichKhoaHoc" name="IDLyLichKhoaHoc" value="@Model.IDLyLichKhoaHoc" hidden />
+                        <div>Họ tên:</div>
+                    </td>
+                    <td class="minHeight">
+                        &nbsp;<span><strong>@Model.Ho</strong></span><span> <strong>@Model.Ten</strong></span>
+                        <input type="text" id="Ho" name="Ho" value="@Model.Ho" hidden />
+                        <input type="text" id="Ten" name="Ten" value="@Model.Ten" hidden />
+                    </td>
+                    <td rowspan="8" class="minHeight">
+                        @*<img id="UrlAnh" src="http://placehold.it/150x200" />*@
+
+                        <div class="form-group">
+
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput" style="height:200px;width:150px">
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width:150px;height:200px; max-width: 150px; max-height: 200px;line-height:200px">
+                                    <img id="UrlAnh" name="UrlAnh" src="~/Images/@Model.UrlAnh" style="max-height:190px" />
+                                </div>
+                                <div hidden class="pull-right" style="margin-left:5px;">
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileinput-exists">
+
+                                        </span>
+                                        <input id="fileUpload" type="file" name="fileUpload">
+                                    </span>
+                                </div>
+
+
+                                <a href="#" class="btn btn-default fileinput-exists" data-trigger="fileinput" tabindex="-1">Tải Ảnh</a>
+
+
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr class="font_noidung minHeight">
+                    <td class="pull-right">
+                        <span>Sinh ngày:</span>
+
+                    </td>
+                    <td>
+                        &nbsp;
+                        <span><strong>@Model.NgaySinh</strong></span>
+                        <span style="margin-left:15px" hidden>tại:</span>
+                        <input type="text" id="NgaySinh" name="NgaySinh" value="@Model.NgaySinh" hidden />
+                        <span hidden><strong>Ko có trong databse</strong></span>
+                        <span style="margin-left:15px">Giới tính:</span>
+                        <span><strong>@Model.GioiTinh</strong></span>
+                        <input type="text" id="GioiTinh" name="GioiTinh" value="@Model.GioiTinh" hidden />
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="minHeight">
+                    <td class="pull-right pad_top">Đơn vị:</td>
+                    <td>
+                        @*&nbsp;&nbsp;<select style="width:174px" class="input_height form-control-static" id="MaDonVi" name="MaDonVi">
+                                <option value="1">Âm nhạc</option>
+                                <option value="2">Công nghệ thông tin</option>
+                                <option value="3">Danh nhân</option>
+                                <option value="25">Du lịch</option>
+                                <option value="13">Khoa học kỹ thuật</option>
+                                <option value="7">Khoa học Vật lý</option>
+
+                            </select>*@
+                        &nbsp;
+                        @Html.DropDownList("MaDonVi", (SelectList)ViewBag.MaDonVi, new { @class = "input_height form-control-static" })
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="minHeight">
+                    <td class="pull-right pad_top">Chức vụ:</td>
+                    <td>
+                        &nbsp; <input id="ChucVu" name="ChucVu" class="input_height" type="text" value="@Model.ChucVu" />
+
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="minHeight">
+                    <td class="pull-right pad_top">Học vị:</td>
+                    <td>
+                        &nbsp; <input id="HocVi" name="HocVi" class="input_height" type="text" value="@Model.HocVi" />
+                        <span style="margin-left:73px">Năm cấp học vị: </span>
+                        &nbsp; <input id="NamCapHocVi" name="NamCapHocVi" class="input_height" style="width:80px" type="number" value="@Model.NamCapHocVi" />
+                    </td>
+                    <td></td>
+                </tr>
+
+
+
+                <tr class="minHeight">
+                    <td class="pull-right pad_top">Học hàm:</td>
+                    <td>
+                        &nbsp; <input id="HocHam" name="HocHam" class="input_height" type="text" value="@Model.HocHam" />
+                        <span style="margin-left:38px">Năm phong học hàm: </span>
+                        &nbsp; <input id="NamPhongHocHam" name="NamPhongHocHam" class="input_height" style="width:80px" type="number" value="@Model.NamPhongHocHam" />
+                    </td>
+                    <td></td>
+                </tr>
+
+
+                <tr class="minHeight">
+                    <td class="pull-right pad_top">Địa chỉ cơ quan:</td>
+                    <td colspan="2">
+                        &nbsp; <input id="DiaChiCQ" name="DiaChiCQ" style="width:446px; max-width:100%" class="input_height" type="text" value="@Model.DiaChiCQ" placeholder="Địa chỉ cơ quan..." />
+                    </td>
+                </tr>
+
+                <tr class="minHeight">
+                    <td class="pull-right pad_top">Điện thoại cơ quan:</td>
+                    <td colspan="2">
+                        &nbsp; <input id="DienThoaiCQ" name="DienThoaiCQ" style="width:115px" class="input_height" type="number" value="@Model.DienThoaiCQ" />
+                        &nbsp;&nbsp;<span>Email cơ quan: </span>
+                        <input id="EmailCQ" name="EmailCQ" class="input_height" style="width:220px;background-color: #e6e6e6" type="email" value="@Model.EmailCQ" readonly tabindex="-1" />
+                    </td>
+                </tr>
+
+                <tr class="minHeight">
+                    <td class="pull-right pad_top">Địa chỉ cá nhân:</td>
+                    <td colspan="2">
+                        &nbsp; <input id="DiChiCaNhan" name="DiChiCaNhan" style="width:446px; max-width:100%" class="input_height" type="text" value="@Model.DiChiCaNhan" />
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="minHeight">
+                    <td class="pull-right pad_top "><span>Điện thoại cá nhân:</span></td>
+                    <td colspan="2">
+                        &nbsp; <input id="DienThoaiCaNhan" name="DienThoaiCaNhan" style="width:115px" class="input_height" type="number" value="@Model.DienThoaiCaNhan" />
+                        &nbsp;&nbsp;<span>Email cá nhân: </span>
+                        <input id="EmailCaNhan" name="EmailCaNhan" style="width:220px" class="input_height" type="email" value="@Model.EmailCaNhan" />
+                    </td>
+                    <td></td>
+                </tr>
+
+
+
+
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude">2. Trình Độ Ngoại ngữ</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemNgoaiNgu()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Ngoại Ngữ</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableNgoaiNgu">
+                        @Html.Partial("Partial_NgoaiNgu")
+                    </td>
+                </tr>
+
+                @* sdfffffsdfsdfsdfsdfsdfsdf *@
+
+
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude">3. Quá trình công tác</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemQuaTrinhCongTac()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Quá Trình Công Tác</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableQTCT">
+                        @Html.Partial("Partial_QuaTrinhCongtac")
+                    </td>
+                </tr>
+
+
+
+
+
+
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude">4. Quá trình đào tạo</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemQuaTrinhDaoTao()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Quá Trình Đào Tạo</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableQTDT">
+                        @Html.Partial("Partial_QuaTrinhDaoTao")
+                    </td>
+                </tr>
+
+                @* II. KẾT QUẢ NGHIÊN CỨU KHOA HỌC*@
+                @* II. KẾT QUẢ NGHIÊN CỨU KHOA HỌC*@
+                @* II. KẾT QUẢ NGHIÊN CỨU KHOA HỌC*@
+                @* II. KẾT QUẢ NGHIÊN CỨU KHOA HỌC*@
+                @* II. KẾT QUẢ NGHIÊN CỨU KHOA HỌC*@
+                @* II. KẾT QUẢ NGHIÊN CỨU KHOA HỌC*@
+
+
+                <tr>
+                    <td colspan="3"><h3 class="font_tieude font_size_tieude_I">II. KẾT QUẢ NGHIÊN CỨU KHOA HỌC</h3> </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="font_tieude">1. Các đề tài đã hoàn thành</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemDeTaiDaHoanThanh()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Đề Tài</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableDTDHT">
+                        @Html.Partial("Partial_DeTaiDaHoanThanh")
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude">2. Các bài báo đăng</td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude font_tieude1">2.1 Bài báo đăng trên tạp chí quốc tế</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemBaiBaoDangQT()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Bài Báo</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableBBDQT">
+                        @Html.Partial("Partial_BaiBaoDangQT")
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude font_tieude1">2.2 Bài báo đăng trên tạp chí trong nước</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemBaiBaoDangTN()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Bài Báo</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableBBDTN">
+                        @Html.Partial("Partial_BaiBaoDangTN")
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude font_tieude1">2.3 Bài báo đăng trên kỷ yếu hội thảo quốc tế</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemBaiBaoDangKyYeuQT()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Bài Báo</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableBBDKYQT">
+                        @Html.Partial("Partial_BaiBaoDangKYQT")
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="font_tieude font_tieude1">2.4 Bài báo đăng trên kỷ yếu hội thảo trong nước</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemBaiBaoDangKyYeuTN()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Bài Báo</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableBBDKYTN">
+                        @Html.Partial("Partial_BaiBaoDangKYTN")
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude">3. Sách phục vụ đào tạo đại học, sau đại học</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center"><button onclick="ThemSach()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Sách</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="pad_top" id="tableSach">
+                        @Html.Partial("Partial_Sach")
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="3" class="font_tieude">4. Các hoạt động nghiên cứu khác</td>
+                </tr>
+
+
+            </table>
+
+            <div>
+                <div class="row">
+                    <div class="font_tieude font_tieude1">4.1 Báo cáo khoa học tại các buổi hội thảo</div>
+                </div>
+                <div class="row">
+                    <div class="text-center marginThem">
+                        <button onclick="ThemSeminar()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Báo Cáo</button>
+                    </div>
+                </div>
+                <div id="tableSeminar">
+                    @Html.Partial("Partial_Seminar")
+                </div>
+            </div>
+
+
+            <div>
+                <div class="row">
+                    <div class="font_tieude font_tieude1">4.2 Hướng dẫn sinh viên NCKH</div>
+                </div>
+                <div class="row">
+                    <div class="text-center marginThem">
+                        <button onclick="ThemHuongDanSinhVienNCKH()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Đề Tài</button>
+                    </div>
+                </div>
+                <div id="tableHuongDanSinhVienNCKH">
+                    @Html.Partial("Partial_HuongDanSinhVienNCKH")
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="font_tieude font_tieude1">4.3 Các tình huống nghiên cứu</div>
+                </div>
+                <div class="row">
+                    <div class="text-center marginThem">
+                        <button onclick="ThemTinhHuongNghienCuu()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Tình Huống</button>
+                    </div>
+                </div>
+                <div id="tableTinhHuongNghienCuu">
+                    @Html.Partial("Partial_TinhHuongNghienCuu")
+                </div>
+            </div>
+
+
+            <div>
+                <div class="row">
+                    <div class="font_tieude font_tieude1">4.4 Hoạt động chuyển giao công nghệ</div>
+                </div>
+                <div class="row">
+                    <div class="text-center marginThem">
+                        <button onclick="ThemHoatDongChuyenGiaoCongNghe()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Hoạt Động</button>
+                    </div>
+                </div>
+                <div id="tableChuyenGiaoCongNghe">
+                    @Html.Partial("Partial_HoatDongChuyenGiaoCongNghe")
+                </div>
+            </div>
+
+
+            <div>
+                <div class="row">
+                    <div class="font_tieude font_tieude1">4.5 Tham gia đăng ký đề tài NCKH các cấp</div>
+                </div>
+                <div class="row">
+                    <div class="text-center marginThem">
+                        <button onclick="ThemDangKyDeTaiNCKH()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Đề Tài</button>
+                    </div>
+                </div>
+                <div id="tableDangKyDeTaiNCKH">
+                    @Html.Partial("Partial_DangKyDeTaiNCKH")
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="font_tieude font_tieude1">4.6 Hoạt động khác</div>
+                </div>
+                <div class="row">
+                    <div class="text-center marginThem">
+                        <button onclick="ThemHoatDongKhac()" class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Thêm Hoạt Động</button>
+                    </div>
+                </div>
+                <div id="tableHoatDongKhac">
+                    @Html.Partial("Partial_HoatDongKhac")
+                </div>
+            </div>
+
+
+
+
+
+            @*Luu thay doi*@
+
+            <div class="row">
+                <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-floppy-save"></i> Lưu Thay Đổi </button>
+                <span>   </span>
+                <a class="btn btn-default pull-right" style="margin-right:10px" id="InLLKH"> In LLKH</a>
+
+
+            </div>
+
+            <div class="row">
+
+
+            </div>
+
+
+            @*Ket thuc panel jumbotron*@
+        </div>
+
+    </div>
+</form>
+
+
+@Html.Partial("Partial_ThemNgoaiNgu_Modal", (SelectList)ViewBag.NgoaiNgu)
+@Html.Partial("Partial_ThemQTCT_Modal")
+@Html.Partial("Partial_ThemQTDT_Modal")
+@Html.Partial("Partial_ThemDTDHT_Modal")
+@Html.Partial("Partial_ThemBaiBaoDangQT_Modal")
+@Html.Partial("Partial_ThemBaiBaoDangTN_Modal")
+@Html.Partial("Partial_ThemBaiBaoDangKYQT_Modal")
+@Html.Partial("Partial_ThemBaiBaoDangKYTN_Modal")
+
+
+@Html.Partial("Partial_ThemSach_Modal")
+@Html.Partial("Partial_ThemSeminar_Modal")
+@Html.Partial("Partial_ThemHDSVNCKH_Modal")
+@Html.Partial("Partial_ThemTinhHuongNghienCuu")
+@Html.Partial("Partial_ThemHoatDongChuyenGiaoCongNghe_Modal")
+@Html.Partial("Partial_ThemDangKyDeTaiNCKH")
+@Html.Partial("Partial_ThemHoatDongKhac_Modal")
+
+
+
+<div hidden>
+    <div id="dialog" title="Cảnh Báo">
+        <div class="bodyMessage">
+            <div class="bodyMessage">Vui lòng <span class="redbold">Lưu</span> dữ liệu. Phiên làm việc của bạn sắp hết hạn. </div>
+            <div class="bodyMessage">Trang sẽ được tải lại sau: <span id="min" class="redbold"></span> phút. </div>
+        </div>
+    </div>
+</div>
+@{
+    if (ViewBag.LuuThanhCong == 1)
+    {
+        <input type="hidden" id="TBLuu" value="1" />
+    }
+    else
+    {
+        if (ViewBag.LuuThanhCong == 0)
+        {
+            <input type="hidden" id="TBLuu" value="0" />
+        }
+        else
+        {
+            <input type="hidden" id="TBLuu" value="2" />
+        }
+    }
+}
+
+
+
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/TestSession',
+            data: {  },
+            success: function (data) {
+                if(data.url=="true")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+            }
+        });
+
+
+        //$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+        //    options.async = true;
+        //});
+        //Set đơn vị
+        $("#MaDonVi").val("@Model.MaDonVi");
+        //Khai báo
+        var hoten, ngaysinh, gioitinh, donvi_ma, chucvu, hocvi, namcaphocvi, hocham, namcaphocham, diachicq, dienthoaicq, emailcq, diachicn, dienthoaicn, emailcn, url, urlanh;
+
+
+
+
+
+
+        setTimeout(function () {
+            var i=5;
+            $("#min").html(i);
+            $( "#dialog" ).dialog();
+            setInterval(function(){
+                i = i - 1;
+                $("#min").html(i);
+                $( "#dialog" ).dialog();
+                if(i==0){
+                    window.location.replace('@Url.Action("Index", "Home")');
+                }
+            }, 1000*60);
+
+        }, (@Session.Timeout * 1000 * 60 - 1000 * 60 * 7));
+
+        //Thông báo lưu
+        ThongBaoLuu();
+
+        //Ctrl+R rrrrrrrrrrrrrrrrrrrrrrr
+        @*$(document).keydown(function(e) {
+            if (e.keyCode == 82 && e.ctrlKey) {
+                window.location.replace('@Url.Action("Index", "Home")');
+            }
+        });
+
+        //F5
+        function disableF5(e) {
+            if ((e.which || e.keyCode) == 116)
+                window.location.replace('@Url.Action("Index", "Home")');
+        };
+        $(document).on("keydown", disableF5);*@
+
+        function Print1(){
+
+            var win = window.open('/In-LLKH', '_blank');
+            win.focus();
+        }
+        $("#InLLKH").click(Print1);
+
+        //function OpenInNewTab(url) {
+        //    var win = window.open(url, '_blank');
+        //    win.focus();
+        //}
+        DienThoaiCQ.oninput = function () {
+            if (this.value.length > 15) {
+                this.value = this.value.slice(0,15);
+            }
+        }
+        DienThoaiCaNhan.oninput = function () {
+            if (this.value.length > 15) {
+                this.value = this.value.slice(0,15);
+            }
+        }
+
+    });
+    function ThongBaoLuu() {
+
+        var tbLuu = document.getElementById("TBLuu").value;
+        if (tbLuu == 1) {
+            alert("Lưu thành công");
+            window.location.replace('@Url.Action("Index", "Home")');
+        }
+        else {
+            if (tbLuu == 0) {
+                alert("Lưu thất bại.\nBạn đã hết phiên làm việc. Vui lòng tải lại trang!!!");
+                window.location.replace('@Url.Action("Index", "Home")');
+            }
+
+        }
+    }
+
+
+
+
+
+    function ThemNgoaiNgu() {
+        $("#myModal_ThemNgoaiNgu").modal()
+    }
+    function ThemQuaTrinhCongTac() {
+        $("#myModal_ThemQTCT").modal()
+    }
+    function ThemQuaTrinhDaoTao() {
+        $("#myModal_ThemQTDT").modal()
+    }
+    function ThemDeTaiDaHoanThanh() {
+        $("#myModal_ThemDTDHT").modal()
+    }
+    function ThemBaiBaoDangQT() {
+        $("#myModal_ThemBBDQT").modal()
+    }
+    function ThemBaiBaoDangTN() {
+        $("#myModal_ThemBBDTN").modal()
+    }
+    function ThemBaiBaoDangKyYeuQT() {
+        $("#myModal_ThemBBDKYQT").modal()
+    }
+    function ThemBaiBaoDangKyYeuTN() {
+        $("#myModal_ThemBBDKYTN").modal()
+    }
+
+    function ThemSach() {
+        $("#myModal_ThemSach").modal()
+    }
+    function ThemSeminar() {
+        $("#myModal_ThemSeminar").modal()
+    }
+    function ThemHuongDanSinhVienNCKH() {
+        $("#myModal_ThemHuongDanSinhVienNCKH").modal()
+    }
+    function ThemTinhHuongNghienCuu() {
+        $("#myModal_ThemTHNC").modal()
+    }
+    function ThemHoatDongChuyenGiaoCongNghe() {
+        $("#myModal_ThemHDCGCN").modal()
+    }
+    function ThemDangKyDeTaiNCKH() {
+        $("#myModal_ThemDKDTNCKH").modal()
+    }
+    function ThemHoatDongKhac() {
+        $("#myModal_ThemHDK").modal()
+    }
+
+
+
+    var nghe = "", noi = "", doc = "", viet = "";
+    function ThemNN() {
+        if(document.getElementById("IDNgoaiNgu").value==""){
+            alert('Vui lòng chọn ngôn ngữ');
+            return;
+        }
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var IdNN = document.getElementById("IDNgoaiNgu").value;
+        //get skill nghe, noi , doc viet
+        GetSkill();
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemNgN',
+            data: { idllkh: idLLKH, id: IdNN, nghe: nghe, noi: noi, doc: doc, viet: viet },
+            success: function (data) {
+
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+
+                    $.post(data.url, function (partial) {
+                        $("#tableNgoaiNgu").html(partial);
+                    });
+
+                $("#themNN_Dismis_modal").click();
+                ClearChecked();
+
+            },
+            async: true,
+            error: function () {
+                window.location.replace("/");
+            }
+        });
+    }
+    function XoaNN(idnn) {
+        $.ajax({
+            type: 'POST',
+            //contentType: "application/json; charset=utf-8",
+            url: '/Home/XoaNN',
+            data: { idnn: idnn },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableNgoaiNgu").html(partial);
+                    });
+            },
+            //    error: function (jqXHR, textStatus, errorThrown) {
+            //    alert('An error has occured: ' + errorThrown);
+            //}
+        });
+    }
+
+
+    function ThemQTCT() {
+
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        tuNgay = document.getElementById("tuNgay").value;
+        denNgay = document.getElementById("denNgay").value;
+        noiCongTac = document.getElementById("noiCongTac").value;
+        chucVu = document.getElementById("chucVu").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemQTCT',
+            data: { idLLKH: idLLKH, tungay: tuNgay, denngay: denNgay, noicongtac: noiCongTac, chucvu: chucVu },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableQTCT").html(partial);
+                    });
+                $("#TemQTCT_Dismiss_Modal").click();
+                ClearFeildsQTCT();
+            }
+        });
+
+    }
+    function XoaQTCT(idqtct) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaQTCT',
+            data: { idqtct: idqtct },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+
+                        $("#tableQTCT").html(partial);
+                    });
+            }
+        });
+    }
+
+    function ThemQTDT() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var bacDT = document.getElementById("bacDaoTao").value;
+        var tuNgay = document.getElementById("tuNgayQTCT").value;
+        var denNgay = document.getElementById("denNgayQTCT").value;
+        var noiDaoTao = document.getElementById("noiDaoTaoQTCT").value;
+        var nganh = document.getElementById("nganhQTCT").value;
+        var tenLuanAnTotNghiep = document.getElementById("tenLuanAnTotNghiepQTCT").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemQTDT',
+            data: { idLLKH: idLLKH, bacdt: bacDT, tungay: tuNgay, denngay: denNgay, noidaotao: noiDaoTao, nganh: nganh, tentuanantotnghiep: tenLuanAnTotNghiep },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableQTDT").html(partial);
+                    });
+                $("#TemQTDT_Dismiss_Modal").click();
+                ClearFeildQTDT();
+            }
+        });
+
+    }
+    function XoaQTDT(idqtdt) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaQTDT',
+            data: { idqtdt: idqtdt },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableQTDT").html(partial);
+                    });
+            }
+        });
+    }
+
+
+    function ThemDTDHT() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var capDoDeTai = document.getElementById("capDoDeTai").value;
+        var tenDeTai = document.getElementById("tenDeTai").value;
+        var maSoVaCapQuanLy = document.getElementById("maSoVaCapQuanLy").value;
+        var tuNgayDTDHT = document.getElementById("tuNgayDTDHT").value;
+        var denNgayDTDHT = document.getElementById("denNgayDTDHT").value;
+        var kinhPhi = document.getElementById("kinhPhi").value;
+        var chuNhiem = document.getElementById("chuNhiem").value;
+        var thamGia = document.getElementById("thamGia").value;
+        var ngayNghiemThu = document.getElementById("ngayNghiemThu").value;
+        var ketQua = document.getElementById("ketQua").value;
+        var gioNCKHQuyDoi = document.getElementById("gioNCKHQuyDoi").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemDTDHT',
+            data: { idLLKH: idLLKH, capdodetai: capDoDeTai, tendetai: tenDeTai, masovacapquanly: maSoVaCapQuanLy, tungay: tuNgayDTDHT, denngay: denNgayDTDHT, kinhphi: kinhPhi, chunhiem: chuNhiem, thamgia: thamGia, ngaynghiemthu: ngayNghiemThu, ketqua: ketQua, gioNCKHQuyDoi: gioNCKHQuyDoi },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableDTDHT").html(partial);
+                    });
+                $("#ThemDTDHT_Dismiss_Modal").click();
+                ClearFeildDTDHT();
+            }
+        });
+    }
+    function XoaDTDHT(idqtdt) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaDTDHT',
+            data: { iddtdht: idqtdt },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableDTDHT").html(partial);
+                    });
+            }
+        });
+    }
+
+    function ThemBBDQT() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenBaiBaoQT = document.getElementById("tenBaiBaoQT").value;
+        var tenTacGiaQT = document.getElementById("tenTacGiaQT").value;
+        var tenTapChiQT = document.getElementById("tenTapChiQT").value;
+        var ngayXBQT = document.getElementById("ngayXBQT").value;
+        var sanPhamCuaDeTaiQT = document.getElementById("sanPhamCuaDeTaiQT").value;
+        var soHieuQT = document.getElementById("soHieuQT").value;
+        var diemIFQT = document.getElementById("diemIFQT").value;
+        var gioNCKHQuyDoiBBQT = document.getElementById("gioNCKHQuyDoiBBQT").value;
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemBBDTrenTapChiQT',
+            data: { idLLKH: idLLKH, loaibaodang: "Bài Báo Quốc Tế", tenBaiBaoQT: tenBaiBaoQT, tentacgiaQT: tenTacGiaQT, tenTapChiQT: tenTapChiQT, ngayxuatbanQT: ngayXBQT, sanPhamCuaDeTai: sanPhamCuaDeTaiQT, sohieu: soHieuQT, diemIFQT: diemIFQT, gioNCKHQD: gioNCKHQuyDoiBBQT },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableBBDQT").html(partial);
+                    });
+                $("#ThemBBDQT_Dismiss_Modal").click();
+                ClearFeildBBDTCQT();
+            }
+        });
+    }
+    function XoaBBDQT(idqtdt) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaBBDTrenTapChiQT',
+            data: { idbbdQT: idqtdt },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableBBDQT").html(partial);
+                    });
+            }
+        });
+    }
+
+    function ThemBBDTN() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenBaiBaoTN = document.getElementById("tenBaiBaoTN").value;
+        var tenTacGiaTN = document.getElementById("tenTacGiaTN").value;
+        var tenTapChiTN = document.getElementById("tenTapChiTN").value;
+        var ngayXBTN = document.getElementById("ngayXBTN").value;
+        var sanPhamCuaDeTaiTN = document.getElementById("sanPhamCuaDeTaiTN").value;
+        var soHieuTN = document.getElementById("soHieuTN").value;
+        var diemIFTN = document.getElementById("diemIFTN").value;
+        var gioNCKHQuyDoiBBTN = document.getElementById("gioNCKHQuyDoiBBTN").value;
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemBBDTrenTapChiTN',
+            data: { idLLKH: idLLKH, loaibaodang: "Bài Báo Trong Nước", tenBaiBaoTN: tenBaiBaoTN, tentacgiaTN: tenTacGiaTN, tenTapChiTN: tenTapChiTN, ngayxuatbanTN: ngayXBTN, sanPhamCuaDeTai: sanPhamCuaDeTaiTN, sohieu: soHieuTN, diemIFTN: diemIFTN, gioNCKHQD: gioNCKHQuyDoiBBTN },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableBBDTN").html(partial);
+                    });
+                $("#ThemBBDTN_Dismiss_Modal").click();
+                ClearFeildBBDTCTN();
+            }
+        });
+    }
+    function XoaBBDTN(idqtdt) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaBBDTrenTapChiTN',
+            data: { idbbdTN: idqtdt },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableBBDTN").html(partial);
+                    });
+            }
+        });
+    }
+
+    function ThemBBDKYQT() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenBaiBaoKYQT = document.getElementById("tenBaiBaoKYQT").value;
+        var tenTacGiaKYQT = document.getElementById("tenTacGiaKYQT").value;
+        var tenHoiNghiKYQT = document.getElementById("tenHoiNghiKYQT").value;
+        var capToChucKYQT = document.getElementById("capToChucKYQT").value;
+        var ngayToChucKYQT = document.getElementById("ngayToChucKYQT").value;
+        var soHieuKYQT = document.getElementById("soHieuKYQT").value;
+        var sanPhamCuaDeTaiKYQT = document.getElementById("sanPhamCuaDeTaiKYQT").value;
+        var gioNCKHQuyDoiKYQT = document.getElementById("gioNCKHQuyDoiKYQT").value;
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemBBDTrenKyYeuHoiThaoQT',
+            data: { idLLKH: idLLKH, loaibaodang: "Hội Thảo Quốc Tế", tenBaiBaoKYQT: tenBaiBaoKYQT, tenTacGiaKYQT: tenTacGiaKYQT, tenHoiNghiKYQT: tenHoiNghiKYQT, capToChucKYQT: capToChucKYQT, ngayToChucKYQT: ngayToChucKYQT, soHieuKYQT: soHieuKYQT, sanPhamCuaDeTaiKYQT: sanPhamCuaDeTaiKYQT, gioNCKHQuyDoiKYQT: gioNCKHQuyDoiKYQT },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableBBDKYQT").html(partial);
+                    });
+                $("#ThemBBDKYQT_Dismiss_Modal").click();
+                ClearFeildBBDKYQT();
+            }
+        });
+    }
+    function XoaBBDKYQT(idqtdt) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaBBDTrenKyYeuHoiThaoQT',
+            data: { idbbdKYQT: idqtdt },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableBBDKYQT").html(partial);
+                    });
+            }
+        });
+    }
+
+    function ThemBBDKYTN() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenBaiBaoKYTN = document.getElementById("tenBaiBaoKYTN").value;
+        var tenTacGiaKYTN = document.getElementById("tenTacGiaKYTN").value;
+        var tenHoiNghiKYTN = document.getElementById("tenHoiNghiKYTN").value;
+        var capToChucKYTN = document.getElementById("capToChucKYTN").value;
+        var ngayToChucKYTN = document.getElementById("ngayToChucKYTN").value;
+        var soHieuKYTN = document.getElementById("soHieuKYTN").value;
+        var sanPhamCuaDeTaiKYTN = document.getElementById("sanPhamCuaDeTaiKYTN").value;
+        var gioNCKHQuyDoiKYTN = document.getElementById("gioNCKHQuyDoiKYTN").value;
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemBBDTrenKyYeuHoiThaoTN',
+            data: { idLLKH: idLLKH, loaibaodang: "Hội Thảo Trong Nước", tenBaiBaoKYTN: tenBaiBaoKYTN, tenTacGiaKYTN: tenTacGiaKYTN, tenHoiNghiKYTN: tenHoiNghiKYTN, capToChucKYTN: capToChucKYTN, ngayToChucKYTN: ngayToChucKYTN, soHieuKYTN: soHieuKYTN, sanPhamCuaDeTaiKYTN: sanPhamCuaDeTaiKYTN, gioNCKHQuyDoiKYTN: gioNCKHQuyDoiKYTN },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableBBDKYTN").html(partial);
+                    });
+                $("#ThemBBDKYTN_Dismiss_Modal").click();
+                ClearFeildBBDKYTN();
+            }
+        });
+    }
+    function XoaBBDKYTN(idqtdt) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaBBDTrenKyYeuHoiThaoTN',
+            data: { idbbdKYTN: idqtdt },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableBBDKYTN").html(partial);
+                    });
+            }
+        });
+    }
+
+    function ThemS() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenSach = document.getElementById("tenSach").value;
+        var nhaXuatBan = document.getElementById("nhaXuatBanSach").value;
+        var ngayXuatBan = document.getElementById("ngayXuatBanSach").value;
+        var chuBien = document.getElementById("chuBienSach").value;
+        var thamGia = document.getElementById("thamGiaSach").value;
+        var gioNCKHQuyDoi = document.getElementById("gioNCKHQuyDoiSach").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemSach',
+            data: { idLLKH: idLLKH, tensach: tenSach, nhaxuatban: nhaXuatBan, ngayxuatban: ngayXuatBan, chubien: chuBien, thamgia: thamGia, gioNCKHquydoi: gioNCKHQuyDoi },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableSach").html(partial);
+                    });
+                $("#ThemSach_Dismiss_Modal").click();
+                ClearFeildSach();
+            }
+        });
+
+    }
+    function XoaS(idSach) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaSach',
+            data: { idSach: idSach },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableSach").html(partial);
+                    });
+            }
+        });
+    }
+
+
+    function ThemSMN() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenBaoCaoSeminar = document.getElementById("tenBaoCaoSeminar").value;
+        var tenTacGiaSeminar = document.getElementById("tenTacGiaSeminar").value;
+        var capSeminar = document.getElementById("capSeminar").value;
+        var ngayThucHienSeminar = document.getElementById("ngayThucHienSeminar").value;
+        var ghiChuSeminar = document.getElementById("ghiChuSeminar").value;
+        var gioNCKHQuyDoiSeminar = document.getElementById("gioNCKHQuyDoiSeminar").value;
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemSeminar',
+            data: { idLLKH: idLLKH, tenbaocaoseminar: tenBaoCaoSeminar, tentacgiaseminar: tenTacGiaSeminar, capseminar: capSeminar, ngaythuchienseminar: ngayThucHienSeminar, ghichuseminar: ghiChuSeminar, gioNCKHquydoiseminar: gioNCKHQuyDoiSeminar },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableSeminar").html(partial);
+                    });
+                $("#ThemSeminar_Dismiss_Modal").click();
+                ClearFeildSeminar();
+            }
+        });
+    }
+    function XoaSeminar(idSeminar) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaSeminar',
+            data: { idSeminar: idSeminar },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableSeminar").html(partial);
+                    });
+            }
+        });
+    }
+
+
+    function ThemHDNCKH() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenDeTaiHD = document.getElementById("tenDeTaiHD").value;
+        var KQKhoaHD = document.getElementById("KQKhoaHD").value;
+        var KQTruongHD = document.getElementById("KQTruongHD").value;
+        var giaiThuongHD = document.getElementById("giaiThuongHD").value;
+        var tuNgayHD = document.getElementById("tuNgayHD").value;
+        var denNgayHD = document.getElementById("denNgayHD").value;
+        var ghiChuHD = document.getElementById("ghiChuHD").value;
+        var gioNCKHQuyDoiHD = document.getElementById("gioNCKHQuyDoiHD").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemHDNCKH',
+            data: { idLLKH: idLLKH, tendetaiHD: tenDeTaiHD, kqkhoaHD: KQKhoaHD, kqtruongHD: KQTruongHD, giaithuongHD: giaiThuongHD, tungayHD: tuNgayHD, denngayHD: denNgayHD, ghichuHD: ghiChuHD, gioNCKHQuyDoiHD: gioNCKHQuyDoiHD },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableHuongDanSinhVienNCKH").html(partial);
+                    });
+                $("#ThemHDNCKH_Dismiss_Modal").click();
+                ClearFeildHDNCKH();
+
+            }
+        });
+
+    }
+    function XoaHDNCKH(idHDNCKH) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaHDNCKH',
+            data: { idHDNCKH: idHDNCKH },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableHuongDanSinhVienNCKH").html(partial);
+                    });
+            }
+        });
+    }
+
+
+    function ThemTHNC() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenTinhHuong = document.getElementById("tenTinhHuong").value;
+        var capDoTinhHuong = document.getElementById("capDoTinhHuong").value;
+        var tuNgayTinhHuong = document.getElementById("tuNgayTinhHuong").value;
+        var denNgayTinhHuong = document.getElementById("denNgayTinhHuong").value;
+        var ghiChuTinhHuong = document.getElementById("ghiChuTinhHuong").value;
+        var gioNCKHQuyDoiTinhHuong = document.getElementById("gioNCKHQuyDoiTinhHuong").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemTHNC',
+            data: { idLLKH: idLLKH, tentinhhuong: tenTinhHuong, capdo: capDoTinhHuong, tungay: tuNgayTinhHuong, denngay: denNgayTinhHuong, ghichu: ghiChuTinhHuong, gioNCKHquydoi: gioNCKHQuyDoiTinhHuong },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+
+                        $("#tableTinhHuongNghienCuu").html(partial);
+                    });
+                $("#ThemTHNC_Dismiss_Modal").click();
+                ClearFeildTHNC();
+            }
+        });
+    }
+    function XoaTHNC(idHDNCKH) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaTHNC',
+            data: { idTHNC: idHDNCKH },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableTinhHuongNghienCuu").html(partial);
+                    });
+            }
+        });
+    }
+
+    function ThemCGCN() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenHoatDongCGCN = document.getElementById("tenHoatDongCGCN").value;
+        var tenSanPhamCuaDeTaiCGCN = document.getElementById("tenSanPhamCuaDeTaiCGCN").value;
+        var doanhThuCGCN = document.getElementById("doanhThuCGCN").value;
+        var tuNgayCGCN = document.getElementById("tuNgayCGCN").value;
+        var denNgayCGCN = document.getElementById("denNgayCGCN").value;
+        var tacGiaCGCN = document.getElementById("tacGiaCGCN").value;
+        var gioNCKHQuyDoiCGCN = document.getElementById("gioNCKHQuyDoiCGCN").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemCGCN',
+            data: { idLLKH: idLLKH, tenhoatdong: tenHoatDongCGCN, tensanpham: tenSanPhamCuaDeTaiCGCN, doanhthu: doanhThuCGCN, tungay: tuNgayCGCN, denngay: denNgayCGCN, tacgia: tacGiaCGCN, gioNCKHQuyDoi: gioNCKHQuyDoiCGCN },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableChuyenGiaoCongNghe").html(partial);
+                    });
+                $("#ThemCGCN_Dismiss_Modal").click();
+                ClearFeildCGCN();
+            }
+        });
+    }
+    function XoaCGCN(idHDNCKH) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaCGCN',
+            data: { idCGCN: idHDNCKH },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableChuyenGiaoCongNghe").html(partial);
+                    });
+            }
+        });
+    }
+
+    function ThemDKCTNCKH() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenDKDTNCKH = document.getElementById("tenDKDTNCKH").value;
+        var capDKCTNCKH = document.getElementById("capDKCTNCKH").value;
+        var mucDoThamGiaDKCTNCKH = document.getElementById("mucDoThamGiaDKCTNCKH").value;
+        var tuNgayDKCTNCKH = document.getElementById("tuNgayDKCTNCKH").value;
+        var denNgayDKCTNCKH = document.getElementById("denNgayDKCTNCKH").value;
+        var gioNCKHQuyDoiDKCTNCKH = document.getElementById("gioNCKHQuyDoiDKCTNCKH").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemDKDTNCKH',
+            data: { idLLKH: idLLKH, tendetai: tenDKDTNCKH, capdodetai: capDKCTNCKH, mucdothamgia: mucDoThamGiaDKCTNCKH, tungay: tuNgayDKCTNCKH, denngay: denNgayDKCTNCKH, gioNCKHquydoi: gioNCKHQuyDoiDKCTNCKH },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableDangKyDeTaiNCKH").html(partial);
+                    });
+                $("#ThemDKCTNCKH_Dismiss_Modal").click();
+                ClearFeildDKCTNCKH();
+            }
+        });
+    }
+    function XoaDKDTNCKH(idDKDTNCKH) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaDKDTNCKH',
+            data: { idDKDTNCKH: idDKDTNCKH },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableDangKyDeTaiNCKH").html(partial);
+                    });
+            }
+        });
+    }
+
+
+    function ThemHDK() {
+        var idLLKH = document.getElementById("IDLyLichKhoaHoc").value;
+        var tenHoatDongKhac = document.getElementById("tenHoatDongKhac").value;
+        var noiDungHDK = document.getElementById("noiDungHDK").value;
+        var tuNgayHDK = document.getElementById("tuNgayHDK").value;
+        var denNgayHDK = document.getElementById("denNgayHDK").value;
+        var ghiChuHDK = document.getElementById("ghiChuHDK").value;
+        var gioNCKHQuyDoiHDK = document.getElementById("gioNCKHQuyDoiHDK").value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/ThemHDK',
+            data: { idLLKH: idLLKH, tenhoatdong: tenHoatDongKhac, noidung: noiDungHDK, tungay: tuNgayHDK, denngay: denNgayHDK, ghichu: ghiChuHDK, gioNCKHquydoi: gioNCKHQuyDoiHDK },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableHoatDongKhac").html(partial);
+                    });
+                $("#ThemHDK_Dismiss_Modal").click();
+                ClearFeildHDK();
+            }
+        });
+    }
+    function XoaHDK(idHDK) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/XoaHDK',
+            data: { idHDK: idHDK },
+            success: function (data) {
+                if(data.url=="")
+                {
+                    window.location.replace('@Url.Action("Index","Home")');
+                }
+                else
+                    $.post(data.url, function (partial) {
+                        $("#tableHoatDongKhac").html(partial);
+                    });
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+    function GetSkill() {
+        if (document.getElementById("Nghe1").checked)
+            nghe = document.getElementById("Nghe1").value;
+        else
+            if (document.getElementById("Nghe2").checked)
+                nghe = document.getElementById("Nghe2").value;
+            else
+                if (document.getElementById("Nghe3").checked)
+                    nghe = document.getElementById("Nghe3").value;
+                else
+                    nghe = "";
+        if (document.getElementById("Noi1").checked)
+            noi = document.getElementById("Noi1").value;
+        else
+            if (document.getElementById("Noi2").checked)
+                noi = document.getElementById("Noi2").value;
+            else
+                if (document.getElementById("Noi3").checked)
+                    noi = document.getElementById("Noi3").value;
+                else
+                    noi = "";
+        if (document.getElementById("Doc1").checked)
+            doc = document.getElementById("Doc1").value;
+        else
+            if (document.getElementById("Doc2").checked)
+                doc = document.getElementById("Doc2").value;
+            else
+                if (document.getElementById("Doc3").checked)
+                    doc = document.getElementById("Doc3").value;
+                else
+                    doc = "";
+        if (document.getElementById("Viet1").checked)
+            viet = document.getElementById("Viet1").value;
+        else
+            if (document.getElementById("Viet2").checked)
+                viet = document.getElementById("Viet2").value;
+            else
+                if (document.getElementById("Viet3").checked)
+                    viet = document.getElementById("Viet3").value;
+                else
+                    viet = "";
+    }
+
+    function ClearChecked() {
+        var nghes = document.getElementsByName("Nghe");
+        for (var i = 0; i < nghes.length; i++)
+            nghes[i].checked = false;
+
+        var nois = document.getElementsByName("Noi");
+        for (var i = 0; i < nois.length; i++)
+            nois[i].checked = false;
+
+        var docs = document.getElementsByName("Doc");
+        for (var i = 0; i < docs.length; i++)
+            docs[i].checked = false;
+
+        var viets = document.getElementsByName("Viet");
+        for (var i = 0; i < viets.length; i++)
+            viets[i].checked = false;
+        document.getElementById("IDNgoaiNgu").value="";
+    }
+
+    function ClearFeildsQTCT() {
+        document.getElementById("tuNgay").value = "";
+        document.getElementById("denNgay").value = "";
+        document.getElementById("noiCongTac").value = "";
+        document.getElementById("chucVu").value = "";
+    }
+    function ClearFeildQTDT() {
+        document.getElementById("bacDaoTao").value = "";
+        document.getElementById("tuNgayQTCT").value = "";
+        document.getElementById("denNgayQTCT").value = "";
+        document.getElementById("noiDaoTaoQTCT").value = "";
+        document.getElementById("nganhQTCT").value = "";
+        document.getElementById("tenLuanAnTotNghiepQTCT").value = "";
+    }
+    function ClearFeildDTDHT() {
+        document.getElementById("capDoDeTai").value = "";
+        document.getElementById("tenDeTai").value = "";
+        document.getElementById("maSoVaCapQuanLy").value = "";
+        document.getElementById("tuNgayDTDHT").value = "";
+        document.getElementById("denNgayDTDHT").value = "";
+        document.getElementById("kinhPhi").value = "";
+        document.getElementById("chuNhiem").value = "";
+        document.getElementById("thamGia").value = "";
+        document.getElementById("ngayNghiemThu").value = "";
+        document.getElementById("ketQua").value = "";
+        document.getElementById("gioNCKHQuyDoi").value = "";
+    }
+    function ClearFeildBBDTCQT() {
+        document.getElementById("tenBaiBaoQT").value = "";
+        document.getElementById("tenTacGiaQT").value = "";
+        document.getElementById("tenTapChiQT").value = "";
+        document.getElementById("ngayXBQT").value = "";
+        document.getElementById("sanPhamCuaDeTaiQT").value = "";
+        document.getElementById("soHieuQT").value = "";
+        document.getElementById("diemIFQT").value = "";
+        document.getElementById("gioNCKHQuyDoiBBQT").value = "";
+    }
+    function ClearFeildBBDTCTN() {
+        document.getElementById("tenBaiBaoTN").value = "";
+        document.getElementById("tenTacGiaTN").value = "";
+        document.getElementById("tenTapChiTN").value = "";
+        document.getElementById("ngayXBTN").value = "";
+        document.getElementById("sanPhamCuaDeTaiTN").value = "";
+        document.getElementById("soHieuTN").value = "";
+        document.getElementById("diemIFTN").value = "";
+        document.getElementById("gioNCKHQuyDoiBBTN").value = "";
+    }
+    function ClearFeildBBDKYQT() {
+        document.getElementById("tenBaiBaoKYQT").value = "";
+        document.getElementById("tenTacGiaKYQT").value = "";
+        document.getElementById("tenHoiNghiKYQT").value = "";
+        document.getElementById("capToChucKYQT").value = "";
+        document.getElementById("ngayToChucKYQT").value = "";
+        document.getElementById("soHieuKYQT").value = "";
+        document.getElementById("sanPhamCuaDeTaiKYQT").value = "";
+        document.getElementById("gioNCKHQuyDoiKYQT").value = "";
+    }
+    function ClearFeildBBDKYTN() {
+        document.getElementById("tenBaiBaoKYTN").value = "";
+        document.getElementById("tenTacGiaKYTN").value = "";
+        document.getElementById("tenHoiNghiKYTN").value = "";
+        document.getElementById("capToChucKYTN").value = "";
+        document.getElementById("ngayToChucKYTN").value = "";
+        document.getElementById("soHieuKYTN").value = "";
+        document.getElementById("sanPhamCuaDeTaiKYTN").value = "";
+        document.getElementById("gioNCKHQuyDoiKYTN").value = "";
+    }
+
+    function ClearFeildSach() {
+        document.getElementById("tenSach").value = "";
+        document.getElementById("nhaXuatBanSach").value = "";
+        document.getElementById("ngayXuatBanSach").value = "";
+        document.getElementById("chuBienSach").value = "";
+        document.getElementById("thamGiaSach").value = "";
+        document.getElementById("gioNCKHQuyDoiSach").value = "";
+    }
+    function ClearFeildSeminar() {
+        document.getElementById("tenBaoCaoSeminar").value = "";
+        document.getElementById("tenTacGiaSeminar").value = "";
+        document.getElementById("capSeminar").value = "";
+        document.getElementById("ngayThucHienSeminar").value = "";
+        document.getElementById("ghiChuSeminar").value = "";
+        document.getElementById("gioNCKHQuyDoiSeminar").value = "";
+    }
+    function ClearFeildHDNCKH() {
+        document.getElementById("tenDeTaiHD").value = "";
+        document.getElementById("KQKhoaHD").value = "";
+        document.getElementById("KQTruongHD").value = "";
+        document.getElementById("giaiThuongHD").value = "";
+        document.getElementById("tuNgayHD").value = "";
+        document.getElementById("denNgayHD").value = "";
+        document.getElementById("ghiChuHD").value = "";
+        document.getElementById("gioNCKHQuyDoiHD").value = "";
+    }
+    function ClearFeildTHNC() {
+        document.getElementById("tenTinhHuong").value = "";
+        document.getElementById("capDoTinhHuong").value = "";
+        document.getElementById("tuNgayTinhHuong").value = "";
+        document.getElementById("denNgayTinhHuong").value = "";
+        document.getElementById("ghiChuTinhHuong").value = "";
+        document.getElementById("gioNCKHQuyDoiTinhHuong").value = "";
+
+    }
+    function ClearFeildCGCN() {
+        document.getElementById("tenHoatDongCGCN").value = "";
+        document.getElementById("tenSanPhamCuaDeTaiCGCN").value = "";
+        document.getElementById("doanhThuCGCN").value = "";
+        document.getElementById("tuNgayCGCN").value = "";
+        document.getElementById("denNgayCGCN").value = "";
+        document.getElementById("tacGiaCGCN").value = "";
+        document.getElementById("gioNCKHQuyDoiCGCN").value = "";
+    }
+    function ClearFeildDKCTNCKH() {
+        document.getElementById("tenDKDTNCKH").value = "";
+        document.getElementById("capDKCTNCKH").value = "";
+        document.getElementById("mucDoThamGiaDKCTNCKH").value = "";
+        document.getElementById("tuNgayDKCTNCKH").value = "";
+        document.getElementById("denNgayDKCTNCKH").value = "";
+        document.getElementById("gioNCKHQuyDoiDKCTNCKH").value = "";
+    }
+    function ClearFeildHDK() {
+        document.getElementById("tenHoatDongKhac").value = "";
+        document.getElementById("noiDungHDK").value = "";
+        document.getElementById("tuNgayHDK").value = "";
+        document.getElementById("denNgayHDK").value = "";
+        document.getElementById("ghiChuHDK").value = "";
+        document.getElementById("gioNCKHQuyDoiHDK").value = "";
+    }
+
+
+
+</script>

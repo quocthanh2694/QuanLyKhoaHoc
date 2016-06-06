@@ -1,0 +1,61 @@
+﻿
+@using QLKH_NEW.Models
+@{
+    List<LyLichKhoaHoc_HoiThao> list_LLKKH_BBDKYQT = (List<LyLichKhoaHoc_HoiThao>)Session["ListLLKHBBDKYQT"];
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading text-center "><strong>Bài Báo Đăng Trên Kỷ Yếu Hội Thảo Quốc Tế</strong></div>
+
+
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Tên bài báo</th>
+            <th>Tên tác giả</th>
+            <th>Tên hội nghị</th>
+            <th>Cấp tổ chức</th>
+            <th>Ngày tổ chức</th>
+            <th>Sản phẩm của đề tài (Mã số)</th>
+            <th>Số hiệu ISBN</th>
+            <th>Giờ NCKH quy đổi</th>
+            <th class="col-md-1">Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKKH_BBDKYQT)
+        {
+            <tr>
+                <td class="col-md-2">@item.TenBaiBao</td>
+                <td class="col-md-2">@item.TenTacGia</td>
+                <td class="col-md-2">@item.TenHoiNghi</td>
+                <td class="col-md-1">@item.CapToChuc</td>
+
+                <td class="col-md-1 "> @item.NgayToChuc</td>
+                <td class="col-md-1 UrlMultiline"> @item.SanPhamCuaDeTai</td>
+
+                <td class="col-md-1">
+                    <span class="UrlMultiline">
+
+                        @item.SoHieuISBN
+                    </span>
+                </td>
+
+
+                <td class="col-md-1">@item.GioNCKHQuyDoi</td>
+                <td>
+                    <button onclick="XoaBBDKYQT('@item.IDHoiThao')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+
+

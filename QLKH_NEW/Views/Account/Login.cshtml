@@ -1,0 +1,41 @@
+﻿@using QLKH_NEW.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@if ((string)TempData["LoginFail"] =="1")
+{
+    <input type="hidden" id="abc" value="1"/>
+}
+else
+{
+    <input type="hidden" id="abc" value="0" />
+}
+<div class="col-md-10  " style="width:1050px;margin-left:4%">
+
+    <div class="jumbotron" style="width:1020px;margin:0;text-align:center;vertical-align:middle">
+        
+        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+    </div>
+</div>
+
+<style>
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if ($("#abc").val() == "1") {
+            alert("Lỗi! Tài khoản chưa được đăng ký.");
+            window.location.replace('/Log-out');
+        }
+        $(function () {
+            $('.jumbotron').css({ height: $(window).innerHeight() });
+            $(window).resize(function () {
+                $('.jumbotron').css({ height: $(window).innerHeight() });
+            });
+        });
+    })
+</script>

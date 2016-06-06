@@ -1,0 +1,53 @@
+﻿
+
+
+@using QLKH_NEW.Models
+@{
+    List<LyLichKhoaHoc_HuongDanNCKH> list_LLKKH_HuongDanNCKH = (List<LyLichKhoaHoc_HuongDanNCKH>)Session["ListLLLKHHDNCKH"];
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading text-center "><strong>Hướng Dẫn Sinh Viên NCKH </strong></div>
+
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Tên đề tài</th>
+            <th>KQ Khoa đánh giá</th>
+            <th>KQ Trường đánh giá</th>
+            <th>Giải thưởng</th>
+            <th>Thời gian</th>
+            <th>Ghi chú</th>
+            <th>Giờ NCKH quy đổi</th>
+            <th class="col-md-1">Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKKH_HuongDanNCKH)
+            {
+            <tr>
+                <td class="col-md-3">@item.TenDeTai</td>
+                <td class="col-md-1">@item.KeQuaKhoaDanhGia</td>
+
+                <td class="col-md-1">@item.KeQuaTruongDanhGia</td>
+                <td class="col-md-1">@item.GiaiThuong</td>
+                <td class="col-md-1">@item.TuNgay - @item.DenNgay</td>
+                <td class="col-md-3">@item.GhiChu</td>
+                <td class="col-md-1">@item.GioNCKHQuyDoi</td>
+                <td>
+                    <button onclick="XoaHDNCKH('@item.IDHuongDanNCKH')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+
+
+

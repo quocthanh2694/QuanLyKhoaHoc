@@ -1,0 +1,874 @@
+﻿@using QLKH_NEW.Models
+@model LyLichKhoaHoc
+
+@{
+    ViewBag.Title = "IN";
+    Layout = null;
+
+    List<LyLichKhoaHoc_BaiBaoDang> list_LLKKH_BBDQT = (List<LyLichKhoaHoc_BaiBaoDang>)Session["ListLLKHBBDQT"];
+    List<LyLichKhoaHoc_BaiBaoDang> list_LLKKH_BBDTN = (List<LyLichKhoaHoc_BaiBaoDang>)Session["ListLLKHBBDTN"];
+
+    List<LyLichKhoaHoc_HoiThao> list_LLKKH_BBDKYQT = (List<LyLichKhoaHoc_HoiThao>)Session["ListLLKHBBDKYQT"];
+    List<LyLichKhoaHoc_HoiThao> list_LLKKH_BBDKYTN = (List<LyLichKhoaHoc_HoiThao>)Session["ListLLKHBBDKYTN"];
+
+
+}
+
+
+<style type="text/css">
+    .fontcontent {
+        font-size: 12pt;
+        font-family: Times New Roman, Arial, Helvetica, sans-serif;
+        color: #000000;
+        font-weight: normal;
+        line-height: 1.2;
+    }
+
+    .bordertable {
+        border-color: #000000;
+        border-width: 1px;
+        border-style: solid;
+        border-collapse: collapse;
+    }
+
+    .borderDOT {
+        border-color: #000000;
+        border-width: 1px;
+        border-style: dotted;
+        border-collapse: collapse;
+    }
+
+    P.breakhere {
+        page-break-before: always;
+    }
+
+    tr td div {
+        margin: 10px 0 10px 0;
+    }
+
+    table tr {
+        height: 30px;
+    }
+
+    .align_left {
+        text-align: center !important;
+    }
+
+    .tr_Height_0px {
+        height: 0px;
+    }
+
+    .Url_Multiline {
+        word-break: break-all;
+    }
+</style>
+
+<div align="center">
+    <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+        <tr>
+            <td colspan=2 align=center>
+                <div style="float: left;margin-top:30px">ĐẠI HỌC QUỐC GIA TP.HCM<BR><B>TRƯ<u>ỜNG ĐẠI HỌC KINH TẾ - L</u>UẬT</B></div>
+                <div style="margin-top:30px"><b>CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM<BR><u>Độc lập - Tự do - Hạnh phúc</u></b></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2 align=center>
+                <div style="float: right; margin-right:35px;margin-top: 25px;">
+                    <img id=framehinhkyyeu src="~/Content/Img/khunganh3x4.png" border=1 class='ui-widget-content ui-corner-all' width="113px" />
+                </div>
+                <div style="font-size: 16pt; margin-right:150px;"><br><b>TÓM TẮT LÝ LỊCH KHOA HỌC</b></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2 align=left><b>I. THÔNG TIN CƠ BẢN</b></td>
+        </tr>
+        <tr>
+            <td colspan=2 align=left><b>1. Bản thân</b></td>
+        </tr>
+        <tr>
+            <td colspan=2 align=left>Họ và tên khai sinh: @Model.Ho&nbsp;@Model.Ten &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Phái: @Model.GioiTinh</td>
+        </tr>
+
+        <tr>
+            <td align=left>Ngày sinh: @Model.NgaySinh</td>
+            @*<td align=left>Nơi sinh:  @Model.noi</td>*@
+        </tr>
+        @*<tr>
+                <td align=left>Dân tộc: @Model.k</td>
+                <td align=left>Tôn giáo: Kh&ocirc;ng</td>
+            </tr>*@
+        <tr>
+            @if(Model.MaDonVi==null)
+            {
+                <td align=left>Đơn vị: </td>
+            }
+            else{
+           
+                <td align=left>Đơn vị: @Model.DonVi.TenDonVi</td>
+            }
+        </tr>
+        <tr>
+            <td align=left>Chức vụ: @Model.ChucVu</td>
+        </tr>
+        <tr>
+            <td align=left>Học vị: @Model.HocVi</td>
+            <td align="left">Năm cấp học vị: @Model.NamCapHocVi</td>
+        </tr>
+        <tr>
+            <td align=left>Học hàm: @Model.HocHam</td>
+            <td align="left">Năm phong học hàm: @Model.NamPhongHocHam</td>
+        </tr>
+        <tr class="tr_Height_0px">
+            <td><p></p></td>
+        </tr>
+        <tr>
+            <td align=left colspan=2>Địa chỉ cơ quan: @Model.DiaChiCQ</td>
+        </tr>
+        <tr>
+            <td align=left colspan=2>Điện thoại cơ quan: @Model.DienThoaiCQ</td>
+        </tr>
+        <tr>
+            <td align=left colspan=2>Email cơ quan: @Model.EmailCQ</td>
+        </tr>
+        <tr class="tr_Height_0px">
+            <td><p></p></td>
+        </tr>
+        <tr>
+            <td align=left colspan=2>Địa chỉ cá nhân: @Model.DiChiCaNhan</td>
+        </tr>
+        <tr>
+            <td align=left colspan=2>Điện thoại cá nhân: @Model.DienThoaiCaNhan</td>
+        </tr>
+        <tr>
+            <td align=left colspan=2>Email cá nhân: @Model.EmailCaNhan</td>
+        </tr>
+
+    </table>
+    <!--class="breakhere"-->
+    @* Ngoại ngữ *@
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>2. Trình độ ngoại ngữ:</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_NgoaiNgu.Count > 0)
+                    {
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Tên ngoại ngữ</th>
+                                    <th class="align_left">Nghe</th>
+                                    <th class="align_left">Nói</th>
+                                    <th class="align_left">Đọc</th>
+                                    <th class="align_left">Viết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_NgoaiNgu)
+                                {
+
+                                    <tr>
+                                        <td align="center">@item.NgoaiNgu.Ngoaingu1</td>
+                                        <td align="center">@item.Nghe</td>
+                                        <td align="center">@item.Noi</td>
+                                        <td align="center">@item.Doc</td>
+                                        <td align="center">@item.Viet</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+
+
+
+        </table>
+    </p>
+
+
+
+
+    <!--class="breakhere"-->
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>3. Quá trình công tác:</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_QuaTrinhCongTac.Count > 0)
+                    {
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Từ ngày</th>
+                                    <th class="align_left">Đến ngày</th>
+                                    <th class="align_left">Nơi công tác</th>
+                                    <th class="align_left">Chức vụ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_QuaTrinhCongTac)
+                                {
+
+                                    <tr>
+                                        <td align="center">@item.TuNgay</td>
+
+                                        <td align="center">@item.DenNgay</td>
+                                        <td align="center" style="max-width: 200px;">@item.NoiCongTac</td>
+                                        <td align="center" style="max-width: 100px;">@item.ChucVu</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+
+    </p>
+
+    <!--class="breakhere"-->
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>4. Quá trình đào tạo:</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_QuaTrinhDaoTao.Count > 0)
+                    {
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Bậc đào tạo</th>
+                                    <th class="align_left">Từ ngày</th>
+                                    <th class="align_left">Đến ngày</th>
+                                    <th class="align_left">Nơi đào tạo</th>
+                                    <th class="align_left">Ngành</th>
+                                    <th class="align_left">Tên luận án tốt nghiệp</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_QuaTrinhDaoTao)
+                                {
+
+                                    <tr>
+                                        <td align="center">@item.BacDaoTao</td>
+                                        <td align="center">@item.TuNgay</td>
+                                        <td align="center">@item.DenNgay</td>
+                                        <td align="center" style="max-width: 100px;">@item.NoiDaoTao</td>
+                                        <td align="center" style="max-width: 60px;">@item.Nganh</td>
+                                        <td align="center" style="max-width: 200px;">@item.TenLuanAnTotNghiep</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+
+
+    <br />
+    <!--class="breakhere"-->
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+
+            <tr>
+                <td colspan=2 align=left><b>II. KẾT QUẢ NGHIÊN CỨU KHOA HỌC:</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=left><b>1. Các đề tài đã hoàn thành:</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_DeTaiDaHoanThanh.Count > 0)
+                    {
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Cấp độ đề tài</th>
+                                    <th class="align_left">Tên đề tài</th>
+                                    <th class="align_left">MS và cấp quản lý</th>
+                                    <th class="align_left">Thời gian</th>
+                                    <th class="align_left">Kinh phí (tr đồng)</th>
+                                    <th class="align_left">Chủ nhiệm</th>
+                                    <th class="align_left">Tham gia</th>
+                                    <th class="align_left">Ngày nghiệm thu</th>
+                                    <th class="align_left">Kết quả</th>
+                                    <th class="align_left">Giờ NCKH quy đổi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_DeTaiDaHoanThanh)
+                                {
+
+                                    <tr>
+                                        <td align="center">@item.CapDoDeTai</td>
+                                        <td align="center">@item.TenDeTai</td>
+                                        <td align="center" class="Url_Multiline">@item.MaSoVaCapQuanLy</td>
+                                        <td align="center" style="max-width: 60px;">@item.TuNgay - @item.DenNgay</td>
+                                        <td align="center">@item.KinhPhi</td>
+                                        <td align="center" style="max-width: 100px;">@item.ChuNhiem</td>
+                                        <td align="center" style="max-width: 250px;">@item.ThamGia</td>
+                                        <td align="center" style="max-width: 60px;">@item.NgayNghiemThu</td>
+                                        <td align="center">@item.KetQua</td>
+                                        <td align="center">@item.GioNCKHQuyDoi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>2. Các bài báo đăng</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;2.1 Bài báo đăng trên tạp chí quốc tế</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (list_LLKKH_BBDQT != null)
+                    {
+                        if (list_LLKKH_BBDQT.Count > 0)
+                        {
+                            <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                                <thead>
+                                    <tr class="bordertable">
+                                        <th class="align_left">Tên bài báo</th>
+                                        <th class="align_left">Tên tác giả</th>
+                                        <th class="align_left">Tên tạp chí</th>
+                                        <th class="align_left">Sản phẩm của đề tài (Mã số)</th>
+                                        <th class="align_left">Số hiệu</th>
+                                        <th class="align_left">Điểm IF</th>
+                                        <th class="align_left">Giờ NCKH quy đổi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in list_LLKKH_BBDQT)
+                                    {
+
+                                        <tr>
+                                            <td align="center" style="max-width:200px">@item.TenBaiBao</td>
+                                            <td align="center" style="max-width:200px">@item.TenTacGia</td>
+                                            <td align="center" style="max-width:150px">@item.TenTapChi</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:50px">@item.SanPhamCuaDeTai</td>
+                                            <td align="center" class="Url_Multiline" style="width:100px;max-width:200px">@item.SoHieu</td>
+                                            <td align="center">@item.DiemIF</td>
+                                            <td align="center">@item.GioNCKHQuyDoi</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;2.2 Bài báo đăng trên tạp chí trong nước</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (list_LLKKH_BBDTN != null)
+                    {
+                        if (list_LLKKH_BBDTN.Count > 0)
+                        {
+                            <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                                <thead>
+                                    <tr class="bordertable">
+                                        <th class="align_left">Tên bài báo</th>
+                                        <th class="align_left">Tên tác giả</th>
+                                        <th class="align_left">Tên tạp chí</th>
+                                        <th class="align_left">Sản phẩm của đề tài (Mã số)</th>
+                                        <th class="align_left">Số hiệu</th>
+                                        <th class="align_left">Điểm IF</th>
+                                        <th class="align_left">Giờ NCKH quy đổi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in list_LLKKH_BBDTN)
+                                    {
+
+                                        <tr>
+                                            <td align="center" style="max-width:250px">@item.TenBaiBao</td>
+                                            <td align="center" style="max-width:150px">@item.TenTacGia</td>
+                                            <td align="center" style="max-width:100px">@item.TenTapChi</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:50px;width:80px">@item.SanPhamCuaDeTai</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:200px">@item.SoHieu</td>
+                                            <td align="center">@item.DiemIF</td>
+                                            <td align="center">@item.GioNCKHQuyDoi</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;2.3 Bài báo đăng trên kỷ yếu hội thảo quốc tế</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (list_LLKKH_BBDKYQT != null)
+                    {
+                        if (list_LLKKH_BBDKYQT.Count > 0)
+                        {
+                            <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                                <thead>
+                                    <tr class="bordertable">
+                                        <th class="align_left">Tên bài báo</th>
+                                        <th class="align_left">Tên tác giả</th>
+                                        <th class="align_left">Tên hội nghị</th>
+                                        <th class="align_left">Cấp tổ chức</th>
+                                        <th class="align_left">Ngày tổ chức</th>
+                                        <th class="align_left">Sản phẩm của đề tài (Mã số)</th>
+                                        <th class="align_left">Số hiệu ISBN</th>
+                                        <th class="align_left">Giờ NCKH quy đổi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in list_LLKKH_BBDKYQT)
+                                    {
+
+                                        <tr>
+                                            <td align="center" style="max-width:250px">@item.TenBaiBao</td>
+                                            <td align="center" style="max-width:200px">@item.TenTacGia</td>
+                                            <td align="center" style="max-width:200px">@item.TenHoiNghi</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:100px">@item.CapToChuc</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:100px">@item.NgayToChuc</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:50px">@item.SanPhamCuaDeTai</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:60px">@item.SoHieuISBN</td>
+                                            <td align="center">@item.GioNCKHQuyDoi</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;2.4 Bài báo đăng trên kỷ yếu hội thảo trong nước</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (list_LLKKH_BBDKYTN != null)
+                    {
+                        if (list_LLKKH_BBDKYTN.Count > 0)
+                        {
+                            <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                                <thead>
+                                    <tr class="bordertable">
+                                        <th class="align_left">Tên bài báo</th>
+                                        <th class="align_left">Tên tác giả</th>
+                                        <th class="align_left">Tên hội nghị</th>
+                                        <th class="align_left">Cấp tổ chức</th>
+                                        <th class="align_left">Ngày tổ chức</th>
+                                        <th class="align_left">Sản phẩm của đề tài (Mã số)</th>
+                                        <th class="align_left">Số hiệu ISBN</th>
+                                        <th class="align_left">Giờ NCKH quy đổi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in list_LLKKH_BBDKYTN)
+                                    {
+
+                                        <tr>
+                                            <td align="center" style="max-width:250px">@item.TenBaiBao</td>
+                                            <td align="center" style="max-width:200px">@item.TenTacGia</td>
+                                            <td align="center" style="max-width:200px">@item.TenHoiNghi</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:100px">@item.CapToChuc</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:100px">@item.NgayToChuc</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:50px">@item.SanPhamCuaDeTai</td>
+                                            <td align="center" class="Url_Multiline" style="max-width:60px">@item.SoHieuISBN</td>
+                                            <td align="center">@item.GioNCKHQuyDoi</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>3. Sách phục vụ đào tạo đại học, sau đại học</b></td>
+            </tr>
+
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_Sach.Count > 0)
+                    {
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Tên sách</th>
+                                    <th class="align_left">Nhà xuất bản</th>
+                                    <th class="align_left">Ngày xuất bản</th>
+                                    <th class="align_left">Chủ biên</th>
+                                    <th class="align_left">Tham gia</th>
+                                    <th class="align_left">Giờ NCKH quy đổi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_Sach)
+                                {
+
+                                    <tr>
+                                        <td align="center" style="max-width:200px">@item.TenSach</td>
+                                        <td align="center" style="max-width:110px">@item.NhaXuatBan</td>
+                                        <td align="center" style="max-width:60px">@item.NgayXuatBan</td>
+                                        <td align="center" style="max-width:150px">@item.ChuBien</td>
+                                        <td align="center" style="max-width:100px">@item.ThamGia</td>
+                                        <td align="center">@item.GioNCKHQuyDoi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>4. Các hoạt động nghiên cứu khác</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;4.1 Báo cáo khoa học tại các buổi hội thảo </b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_Seminar.Count > 0)
+                    {
+
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Tên báo cáo</th>
+                                    <th class="align_left">Tên tác giả</th>
+                                    <th class="align_left">Cấp hội thảo</th>
+                                    <th class="align_left">Ngày thực hiện</th>
+                                    <th class="align_left">Ghi chú</th>
+                                    <th class="align_left">Giờ NCKH quy đổi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_Seminar)
+                                {
+
+                                    <tr>
+                                        <td align="center" style="max-width:150px">@item.TenBaoCao</td>
+                                        <td align="center" style="max-width:100px">@item.TenTacGia</td>
+                                        <td align="center" style="max-width:70px">@item.CapSeminar</td>
+                                        <td align="center" style="max-width:70px">@item.NgayThucHien</td>
+                                        <td align="center" style="max-width:150px">@item.GhiChu</td>
+                                        <td align="center">@item.GioNCKHQuyDoi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;4.2 Hướng dẫn sinh viên NCKH </b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_HuongDanNCKH.Count > 0)
+                    {
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Tên đề tài</th>
+                                    <th class="align_left">KQ khoa đánh giá</th>
+                                    <th class="align_left">KQ trường đánh giá</th>
+                                    <th class="align_left">Giải thưởng</th>
+                                    <th class="align_left">Thời gian</th>
+                                    <th class="align_left">Ghi chú</th>
+                                    <th class="align_left">Giờ NCKH quy đổi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_HuongDanNCKH)
+                                {
+
+                                    <tr>
+                                        <td align="center" style="max-width:200px">@item.TenDeTai</td>
+                                        <td align="center" style="max-width:70px">@item.KeQuaKhoaDanhGia</td>
+                                        <td align="center" style="max-width:40px">@item.KeQuaTruongDanhGia</td>
+                                        <td align="center" style="max-width:40px">@item.GiaiThuong</td>
+                                        <td align="center" style="max-width:60px">@item.TuNgay - @item.DenNgay</td>
+                                        <td align="center" style="width:100px;max-width:200px">@item.GhiChu</td>
+                                        <td align="center">@item.GioNCKHQuyDoi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;4.3 Các tình huống nghiên cứu </b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_TinhHuongNghienCuu.Count > 0)
+                    {
+
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Tên tình huống</th>
+                                    <th class="align_left">Cấp độ</th>
+                                    <th class="align_left">Thời gian</th>
+                                    <th class="align_left">Ghi chú</th>
+                                    <th class="align_left">Giờ NCKH quy đổi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_TinhHuongNghienCuu)
+                                {
+
+                                    <tr>
+                                        <td align="center" style="max-width:200px">@item.TenTinhHuong</td>
+                                        <td align="center" style="max-width:70px">@item.CapDo</td>
+                                        <td align="center" style="max-width:80px">@item.TuNgay - @item.DenNgay</td>
+                                        <td align="center" style="width:100px;max-width:200px">@item.GhiChu</td>
+                                        <td align="center">@item.GioNCKHQuyDoi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;4.4 Hoạt động chuyển giao công nghệ</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_ChuyenGiaoCongNghe.Count > 0)
+                    {
+
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Tên hoạt động</th>
+                                    <th class="align_left">Sản phẩm của đề tài (Mã số)</th>
+                                    <th class="align_left">Doanh thu</th>
+                                    <th class="align_left">Thời gian</th>
+                                    <th class="align_left">Tác giả</th>
+                                    <th class="align_left">Giờ NCKH quy đổi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_ChuyenGiaoCongNghe)
+                                {
+
+                                    <tr>
+                                        <td align="center" style="max-width:200px;width:150px">@item.TenHoatDong</td>
+                                        <td align="center" style="max-width:50px" class="Url_Multiline">@item.SanPhamCuaDeTai</td>
+                                        <td align="center" style="max-width:50px">@item.DoanhThu</td>
+                                        <td align="center" style="max-width:80px">@item.TuNgay - @item.DenNgay</td>
+                                        <td align="center" style="width:100px;max-width:150px">@item.TacGia</td>
+                                        <td align="center">@item.GioNCKHQuyDoi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;4.5 Tham gia đăng ký đề tài NCKH các cấp</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_DangKyDeTaiNCKH.Count > 0)
+                    {
+
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Tên đề tài</th>
+                                    <th class="align_left">Cấp độ đề tài</th>
+                                    <th class="align_left">Mức độ tham gia</th>
+                                    <th class="align_left">Thời gian</th>
+                                    <th class="align_left">Giờ NCKH quy đổi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_DangKyDeTaiNCKH)
+                                {
+
+                                    <tr>
+                                        <td align="center" style="max-width:200px;width:150px">@item.TenDeTai</td>
+                                        <td align="center" style="max-width:50px" class="Url_Multiline">@item.MaCapDoDeTai</td>
+                                        <td align="center" style="max-width:80px">@item.MucDoThamGia</td>
+                                        <td align="center" style="max-width:80px">@item.TuNgay - @item.DenNgay</td>
+                                        <td align="center">@item.GioNCKHQuyDoi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+
+
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+
+            <tr>
+                <td colspan=2 align=left><b>&nbsp;&nbsp;&nbsp;&nbsp;4.6 Hoạt động khác</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=center>
+                    @if (Model.LyLichKhoaHoc_HoatDongKhac.Count > 0)
+                    {
+
+                        <table style="width:95%; background: white" border="1" cellpadding="5" cellspacing="0" class="bordertable">
+                            <thead>
+                                <tr class="bordertable">
+                                    <th class="align_left">Tên hoạt động</th>
+                                    <th class="align_left">nội dung</th>
+                                    <th class="align_left">Thời gian</th>
+                                    <th class="align_left">Ghi chú</th>
+                                    <th class="align_left">Giờ NCKH quy đổi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LyLichKhoaHoc_HoatDongKhac)
+                                {
+
+                                    <tr>
+                                        <td align="center" style="max-width:200px;width:150px">@item.TenHoatDong</td>
+                                        <td align="center" style="max-width:200px">@item.NoiDung</td>
+                                        <td align="center" style="max-width:80px">@item.TuNgay - @item.DenNgay</td>
+                                        <td align="center" style="max-width:200px">@item.GhiChu</td>
+                                        <td align="center">@item.GioNCKHQuyDoi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        </table>
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @* Footer *@
+    <p>&nbsp;</p>
+    <p>
+        <table width="700px" border="0" cellspacing="0" cellpadding="5" class="fontcontent">
+            <tr>
+                <td colspan=2 align=left><b>III. Lời cam đoan</b></td>
+            </tr>
+            <tr>
+                <td colspan=2 align=left>Tôi xin cam đoan những nội dung khai trên là đúng sự thật và xin chịu trách nhiệm trước pháp luật về nội dung lý lịch khoa học của bản thân.</td>
+            </tr>
+
+            <tr>
+                <td align="left" style="width: 400px"></td>
+                <td align="center">
+                    Ngày @DateTime.Now.Day tháng @DateTime.Now.Month năm @DateTime.Now.Year<br>
+                    <b>Người khai ký tên</b><br><br><br><br><br />
+                    <b>@Model.Ho @Model.Ten</b>
+                    <br />
+                </td>
+            </tr>
+        </table>
+    </p>
+</div>
+
+<script>
+
+</script>
+

@@ -1,0 +1,57 @@
+﻿
+@using QLKH_NEW.Models
+@{
+    List<LyLichKhoaHoc_Sach> list_LLKKH_Sach = (List<LyLichKhoaHoc_Sach>)Session["ListLLKHSach"];
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading text-center "><strong>Sách Phục Vụ Đào Tạo</strong></div>
+ 
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Tên sách</th>
+            <th>Nhà xuất bản</th>
+            <th>Ngày xuất bản</th>
+            <th>Chủ biên</th>
+            <th>Tham gia</th>
+            <th>Giờ NCKH quy đổi</th>
+            <th class="col-md-1">Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKKH_Sach)
+            {
+                <tr>
+                    <td class="col-md-3">@item.TenSach</td>
+                    <td class="col-md-2">@item.NhaXuatBan</td>
+                    @*@if (@item.MaSoVaCapQuanLy.Length > 8)
+                    {
+                        <td class="col-md-1">@item.MaSoVaCapQuanLy.Substring(0, 8) @item.MaSoVaCapQuanLy.Substring(8)</td>
+                    }
+                    else
+                    {
+                        <td class="col-md-1">@item.MaSoVaCapQuanLy</td>
+                    }*@
+                    @*<td>@item.TuNgay đến @item.DenNgay</td>*@
+                    <td class="col-md-1">@item.NgayXuatBan</td>
+                    <td class="col-md-2">@item.ChuBien</td>
+                    <td class="col-md-2">@item.ThamGia</td>
+                    <td class="col-md-1">@item.GioNCKHQuyDoi</td>
+                    <td>
+                        <button onclick="XoaS('@item.IDSach')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+
+
+

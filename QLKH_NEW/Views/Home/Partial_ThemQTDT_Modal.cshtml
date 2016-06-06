@@ -1,0 +1,84 @@
+﻿
+
+
+
+<div class="modal fade" id="myModal_ThemQTDT" role="dialog">
+    <div class="modal-dialog text-center">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="" id="headerDialog">Quá Trình Đào Tạo</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="All_Dialog" class="" style="padding:20px 30px">
+                    <div class="panel panel-info">
+                        <div class="panel-heading text-center ">
+                          
+                            <div class="panel-heading text-center ">
+                                <strong>Bậc đào tạo: </strong>
+                                <select style="width:100%" class="input_height form-control-static" id="bacDaoTao" name="bacDaoTao">
+                                    <option value="Cao Đẳng">Cao Đẳng</option>
+                                    <option value="Đại Học">Đại Học</option>
+                                    <option value="Thạc Sĩ">Thạc Sĩ</option>
+                                    <option value="Tiến Sĩ">Tiến Sĩ</option>
+                                    <option value="Sau Tiến Sĩ">Sau Tiến Sĩ</option>
+                                </select>
+                            </div>
+                        </div>
+                      
+                        
+                        <table style="margin:5px;">
+                            <tr>
+                                <td style="width:150px">
+                                    <strong class="pull-right">Từ ngày: </strong>
+                                </td>
+                                <td>
+                                    <input class="input_height form-control-static" id="tuNgayQTCT" style="margin-left:10px;float:left" type="text" maxlength="10" placeholder="Từ Ngày..." />
+                                </td>
+                                <td><strong style="padding-left:10px"> Đến ngày:</strong></td>
+                                <td>
+                                    <input class="input_height form-control-static " id="denNgayQTCT" type="text" maxlength="10" placeholder="Đến Ngày"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong class="pull-right" style="margin:20px 0 20px 10px">Nơi đào tạo: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="noiDaoTaoQTCT" type="text" style="margin-left:10px;width:440px;max-width:100%" placeholder="Nơi đào tạo...." />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right">Ngành: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="nganhQTCT" style="margin-left:10px;width:440px;max-width:100%" type="text" placeholder="Ngành...." maxlength="255"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right ">Tên luận án tốt nghiệp: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="tenLuanAnTotNghiepQTCT" style="margin-left:10px;width:440px;max-width:100%" type="text" placeholder="Tên luận án tốt nghiệp...." maxlength="255" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="ThemQTDT()" class="btn btn-success "> Thêm</button>
+                    <button class="btn btn-warning pull-right " id="TemQTDT_Dismiss_Modal" data-dismiss="modal">Hủy</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

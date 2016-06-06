@@ -1,0 +1,71 @@
+﻿
+@using QLKH_NEW.Models
+@{
+    List<LyLichKhoaHoc_BaiBaoDang> list_LLKKH_BBDQT = (List<LyLichKhoaHoc_BaiBaoDang>)Session["ListLLKHBBDQT"];
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading text-center "><strong>Bài Báo Đăng Trên Tạp Chí Quốc Tế</strong></div>
+    @*<div class="panel-body">
+            <p>...</p>
+        </div>*@
+
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Tên bài báo</th>
+            <th>Tên tác giả</th>
+            <th>Tên tạp chí</th>
+            <th>Ngày xuất bản</th>
+            <th>Sản phẩm của đề tài (Mã số)</th>
+            <th>Số hiệu</th>
+            <th>Điểm IF</th>
+            <th>Giờ NCKH quy đổi</th>
+            <th class="col-md-1">Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKKH_BBDQT)
+        {
+            <tr>
+                <td class="col-md-3">@item.TenBaiBao</td>
+                <td class="col-md-2">@item.TenTacGia</td>
+                <td class="col-md-2">@item.TenTapChi</td>
+                <td class="col-md-1">@item.NgayXuatBan</td>
+               
+                <td class="col-md-1 UrlMultiline"> @item.SanPhamCuaDeTai</td>
+
+                <td class="col-md-2">
+                    <span class="UrlMultiline">
+                      
+                        @item.SoHieu
+                    </span>
+                </td>
+
+
+                <td class="col-md-1 UrlMultiline">@item.DiemIF</td>
+                <td class="col-md-1">@item.GioNCKHQuyDoi</td>
+                <td>
+                    <button onclick="XoaBBDQT('@item.IDBaiBaoDang')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+
+
+@*@if (@item.MaSoVaCapQuanLy.Length > 8)
+    {
+        <td class="col-md-1">@item.MaSoVaCapQuanLy.Substring(0, 8) @item.MaSoVaCapQuanLy.Substring(8)</td>
+    }
+    else
+    {
+        <td class="col-md-1">@item.MaSoVaCapQuanLy</td>
+    }*@

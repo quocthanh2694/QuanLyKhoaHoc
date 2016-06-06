@@ -1,0 +1,48 @@
+﻿@using QLKH_NEW.Models
+@{
+    List<LyLichKhoaHoc_QuaTrinhDaoTao> list_LLKKH_QTDT = (List<LyLichKhoaHoc_QuaTrinhDaoTao>)Session["ListLLKHQTDT"];
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading text-center "><strong>Quá Trình Đào Tạo</strong></div>
+    @*<div class="panel-body">
+            <p>...</p>
+        </div>*@
+
+    <!-- Table -->
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th>Bậc Đào Tạo</th>
+            <th>Từ Ngày</th>
+            <th>Đến Ngày</th>
+            <th >Nơi Đào Tạo</th>
+            <th >Ngành</th>
+            <th >Tên Luận Án Tốt Nghiệp</th>
+            <th class="col-md-1">Xóa</th>
+
+        </tr>
+        @foreach (var item in list_LLKKH_QTDT)
+        {
+            <tr>
+                <td>@item.BacDaoTao</td>
+                <td>@item.TuNgay</td>
+                <td>@item.DenNgay</td>
+                <td class="col-md-2">@item.NoiDaoTao </td>
+                <td class="col-md-2">@item.Nganh</td>
+                <td class="col-md-3">@item.TenLuanAnTotNghiep</td>
+                <td>
+                    <button onclick="XoaQTDT('@item.IDQuaTrinhDaoTao')" class="btn btn-danger btn-sm btn-color-primary" type="button"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+
+    </table>
+
+</div>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+

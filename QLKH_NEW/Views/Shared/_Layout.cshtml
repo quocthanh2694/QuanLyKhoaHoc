@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LÝ LỊCH KHOA HỌC</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="@Url.Content("~/Content/Img/rsz_logo_uel.png")">
+
+    <style>
+        .footer_PB {
+            clear: both;
+            /*background: url(/Resources/ImagesPortal/PhongBan/bg_footer_PB.jpg) repeat-x;*/
+            background-image: url('../../Content/Img/bg_footer_PB.jpg');
+            height: 89px;
+            width: 1020px;
+        }
+
+        body {
+            padding: 0;
+        }
+
+        .imgFooter {
+            position: relative;
+            right: -914px;
+            top: 20px;
+        }
+
+        .m_left {
+            margin-left: 4%;
+        }
+
+        .btnDangXuat {
+            font-size:16px;
+            position: relative;
+            right: -25px;
+            top: -30px;
+        }
+    </style>
+
+</head>
+<body >
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="container">
+
+        <div class="col-md-12 banner_1 m_left" style="width:1020px;height:140px">
+            <img src="http://psdh.uel.edu.vn/Resources/Images/SubDomain/psdh/IMAGE/PhongSauDaiHoc15.jpg" width="1020" height="140">
+            @*/Content/Img/PhongSauDaiHoc15.jpg*@
+        </div>
+        @RenderBody()
+        <div class="col-md-12">
+            <div class="col-md-10 footer_PB m_left">
+                <div class="imgFooter">
+                    <img src="~/Content/Img/logo_footer_PB.png" />
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="scriptme_">
+        <link href="~/Content/CSS_Me.css" rel="stylesheet" />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery-jasny-bootstrap")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @*@RenderSection("scripts", required: false)*@
+</body>
+</html>

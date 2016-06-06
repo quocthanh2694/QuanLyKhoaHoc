@@ -1,0 +1,158 @@
+﻿
+
+
+
+<div class="modal fade" id="myModal_ThemDTDHT" role="dialog">
+    <div class="modal-dialog text-center">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="" id="headerDialog">Đề Tài Đã Hoàn Thành</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="All_Dialog" class="" style="padding:20px 30px">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading text-center ">
+
+                        </div>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right lbl_table" style="margin:20px 0 20px 10px">Cấp độ ĐT: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="capDoDeTai" class="input_height form-control-static" type="text" style="margin-left:10px;width:440px;max-width:100%" placeholder="Cấp độ đề tài...." maxlength="255" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong class="pull-right lbl_table">Tên ĐT: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="tenDeTai" class="input_height form-control-static" style="margin-left:10px;width:440px;max-width:100%" type="text" placeholder="Tên đề tài...." maxlength="255" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong class="pull-right lbl_table">Mã số và cấp quản lý: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="maSoVaCapQuanLy" class="input_height form-control-static" style="margin-left:10px;width:440px;max-width:100%" type="text" placeholder="Mã số và cấp quản lý...." />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong >Từ ngày: </strong>
+                                </td>
+                                <td style="text-align:left">
+                                    <input style="margin-left:10px;" id="tuNgayDTDHT" class="input_height form-control-static txtTuNgay" type="text" maxlength="7" placeholder="mm/yyyy" />
+                                </td>
+                                <td><strong style="padding-left:10px">Đến ngày:</strong></td>
+                                <td>
+                                    <input id="denNgayDTDHT" class="input_height form-control-static " type="text" maxlength="7" placeholder="mm/yyyy" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width:150px">
+                                    <strong >Kinh phí (tr đồng): </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="kinhPhi"class="input_height form-control-static " style="float:left;margin-left:10px;max-width:100%"  type="text" placeholder="Kinh phí...." maxlength="255" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right lbl_table">Chủ nhiệm: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="chuNhiem" class="input_height form-control-static" style="margin-left:10px;width:440px;max-width:100%" type="text" placeholder="Chủ nhiệm...." maxlength="255" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right lbl_table">Tham gia: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="thamGia" class="input_height form-control-static" style="margin-left:10px;width:440px;max-width:100%" type="text" placeholder="Tham gia...."  />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right lbl_table">Ngày nghiệm thu: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="ngayNghiemThu" style="float:left;margin-left:10px;max-width:100%" class="input_height form-control-static txt_table txtKinhPhi" type="text" placeholder="mm/yyyy" maxlength="7" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right lbl_table">Kết quả: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="ketQua" style="float:left;margin-left:10px;max-width:100%" class="input_height form-control-static txt_table txtKinhPhi" type="text" placeholder="Kết quả...." maxlength="255" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right lbl_table txt_table">Giờ NCKH quy đổi: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input id="gioNCKHQuyDoi" style="float:left; margin-left:10px;max-width:100%" class="input_height form-control-static txt_table txtKinhPhi"  type="text" placeholder="Giờ NCKH quy đổi...." maxlength="255" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="ThemDTDHT()" class="btn btn-success "> Thêm</button>
+                    <button class="btn btn-warning pull-right " data-dismiss="modal" id="ThemDTDHT_Dismiss_Modal">Hủy</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@*<style>
+    .lbl_table{
+        width:100px;
+    }
+    .txt_table{
+        float:left;
+        /*width:180px;*/
+    }
+</style>
+
+
+<style>
+    
+    .txtKinhPhi{
+     
+        -webkit-margin-start:20px;
+
+    }
+    .txtTuNgay{
+        -webkit-margin-start:5px;
+        
+    }
+   
+   
+</style>*@
+
+<!--[if IE]>
+<style>
+    #kinhPhi {
+        margin-left:20px;
+    }
+</style>
+<![endif]-->

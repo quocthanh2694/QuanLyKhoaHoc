@@ -1,0 +1,96 @@
+﻿
+.red {
+    background-color: orangered;
+}
+
+.yelllow {
+    background-color: yellow;
+}
+
+.wide {
+    width: 20%;
+}
+
+.font_tieude {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.2em;
+    margin: 20px 0 20px 0;
+    font-weight: bold;
+}
+
+.font_tieude1 {
+    padding-left: 20px;
+    font-size: 1.13em;
+}
+
+.font_size_tieude_I {
+    font-size: 1.35em;
+    margin: 30px 0 30px 0;
+}
+
+.font_noidung {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+}
+
+.input_height {
+    margin: 5px 0 5px 0;
+    border-radius: 4px;
+    border: solid 1px silver;
+    padding-left: 5px;
+}
+
+.pad_top {
+    padding-top: 6px;
+}
+
+.align_mid {
+    vertical-align: middle;
+}
+
+.minHeight input {
+    min-height: 35px;
+}
+
+.marginThem {
+    margin: 5px;
+}
+
+.UrlMultiline {
+    word-break: break-all;
+}
+
+/*modal*/
+.modal-header, #headerDialog {
+    background-color: #5cb85c;
+    color: white !important;
+    text-align: center;
+    font-size: 23px;
+}
+
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+.hoverpoint {
+    cursor: pointer;
+}
+
+.hover a:hover {
+    cursor: pointer;
+}
+
+.modal-dialog {
+    width: 50%;
+    height: 100%;
+}
+/*modal*/
+
+.bodyMessage {
+    margin: 5px 0 5px 0;
+}
+
+.redbold {
+    color: red;
+    font-weight: bold;
+}

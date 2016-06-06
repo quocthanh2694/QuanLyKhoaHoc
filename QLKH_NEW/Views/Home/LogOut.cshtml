@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<div> Signing out....</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+            $.ajax({
+                type: 'POST',
+                url: '/Home/LogOutAjax',
+                data: {},
+                success: function (data) {
+                    document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:19993/";
+                },
+                //error: function () {
+                //    alert('loi them nn');
+                //}
+            });
+
+    });
+
+</script>

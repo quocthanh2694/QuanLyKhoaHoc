@@ -1,0 +1,94 @@
+﻿
+
+
+
+<div class="modal fade" id="myModal_ThemSach" role="dialog">
+    <div class="modal-dialog text-center">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="" id="headerDialog">Thêm Sách</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="All_Dialog" class="" style="padding:20px 30px">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading text-center ">
+
+                        </div>
+
+
+                        <table style="margin:5px;">
+                            <tr>
+                                <td>
+                                    <strong class="pull-right" style="margin:20px 0 20px 10px">Tên sách: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="tenSach" type="text" style="margin-left:10px;width:440px;max-width:100%" placeholder="Tên sách..." />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong class="pull-right" style="margin:20px 0 20px 10px">Nhà xuất bản: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="nhaXuatBanSach" type="text" style="margin-left:10px;width:440px;max-width:100%" placeholder="Nhà xuất bản..." />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="pull-right" style="margin:20px 0 20px 10px">Ngày xuất bản: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="ngayXuatBanSach" type="text" style="margin-left:10px;width:150px;max-width:100%;float:left" placeholder="dd/mm/yyyy" maxlength="10" />
+                                </td>
+                            </tr>
+
+                            
+                            <tr>
+                                <td>
+                                    <strong class="pull-right" style="margin:20px 0 20px 10px">Chủ biên: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="chuBienSach" type="text" style="margin-left:10px;width:440px;max-width:100%" placeholder="Chủ biên...." maxlength="255" />
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <strong class="pull-right" style="margin:20px 0 20px 10px">Tham gia: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="thamGiaSach" type="text" style="margin-left:10px;width:440px;max-width:100%" placeholder="Tham gia...." maxlength="255"/>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <strong class="pull-right" style="margin:20px 0 20px 10px">Giờ NCKH quy đổi: </strong>
+                                </td>
+                                <td colspan="3">
+                                    <input class="input_height form-control-static" id="gioNCKHQuyDoiSach" type="text" style="margin-left:10px;width:150px;max-width:100%;float:left" placeholder="Giờ NCKH quy đổi...." maxlength="255" />
+                                </td>
+                            </tr>
+                           
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="ThemS()" class="btn btn-success "> Thêm</button>
+                    <button class="btn btn-warning pull-right " id="ThemSach_Dismiss_Modal" data-dismiss="modal">Hủy</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
